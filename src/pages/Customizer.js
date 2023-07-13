@@ -1,4 +1,3 @@
-//import jacket from "../assets/jacket.svg";
 import '../assets/scss/style.scss';
 import outline from "../assets/img/outline.svg"
 
@@ -14,14 +13,29 @@ const Customizer = () => {
             </div>
             <div className="d-grid col-12 py-5">
                 <div className="btn-group" role="group" aria-label="Jacket attribute selectors">
-                    <button type="button" className="btn btn-outline-dark">Size</button>
-                    <button type="button" className="btn btn-outline-dark">Length</button>
-                    <button type="button" className="btn btn-outline-dark">Collar</button>
-                    <button type="button" className="btn btn-outline-dark">Pockets</button>
-                    <button type="button" className="btn btn-outline-dark">Closure</button>
+                    <button type="button" className="btn btn-outline-dark">
+                        <span><small className="text-muted">Size</small></span>
+                        <span><p className="h6">Medium</p></span>
+                    </button>
+                    <button type="button" className="btn btn-outline-dark">
+                        <span><small className="text-muted">Length</small></span>
+                        <span><p className="h6">Short</p></span>
+                    </button>
+                    <button type="button" className="btn btn-outline-dark">
+                        <span><small className="text-muted">Collar</small></span>
+                        <span><p className="h6">Pointed</p></span>
+                    </button>
+                    <button type="button" className="btn btn-outline-dark">
+                        <span><small className="text-muted">Pockets</small></span>
+                        <span><p className="h6">Outside</p></span>
+                    </button>
+                    <button type="button" className="btn btn-outline-dark">
+                        <span><small className="text-muted">Closure</small></span>
+                        <span><p className="h6">Buttons</p></span>
+                    </button>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-outline-dark col-12">Finish Order</button>
+                    <button type="button" className="btn btn-outline-dark col-12 btn-lg">Finish Order</button>
                 </div>
             </div>
         </div>
