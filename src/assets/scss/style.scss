@@ -8,35 +8,15 @@ $items: ("closure": 2, "collar": 3, "length": 3, "pockets": 2, "bpocket": 1);
     }
 }
 
-#outline {
+// #outline {
+//     background-image: url("../img/outline.svg");
+//     background-repeat: no-repeat;
+//     width:400px;
+//     height:500px;
+// }
+
+#bpocket, #collar, #closure, #length, #pockets {
     position:absolute;
-    width:300px;   /* width of actual image */
-    height:249px; /* height of actual image */
-    background-image: url("../img/outline.svg");
-    background-repeat: no-repeat;
-}
-
-#bpocket {
-    width:794px;   /* width of actual image */
-    height:1123px; /* height of actual image */
-}
-
-#collar {
-    width:794px;   /* width of actual image */
-    height:1123px; /* height of actual image */
-}
-
-#closure {
-    width:794px;   /* width of actual image */
-    height:1123px; /* height of actual image */
-}
-
-#length {
-    width:794px;   /* width of actual image */
-    height:1123px; /* height of actual image */
-}
-
-#pockets {
-    width:794px;   /* width of actual image */
-    height:1123px; /* height of actual image */
+    width: 400;
+    height:400px;
 }

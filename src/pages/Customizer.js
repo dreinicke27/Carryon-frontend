@@ -1,15 +1,21 @@
 import '../assets/scss/style.scss';
-import outline from "../assets/img/outline.svg"
+import outline from '../assets/img/outline.svg';
 
 const Customizer = () => {
+
     return (
         <div className='container'> 
             <h1 className='py-5'>CUSTOMIZER</h1>
             <div>
                 <p><a href="#../components/SizeChart" className="link-secondary">size chart</a></p>
             </div>
-            <div>
-                <img src={outline} className="mx-auto d-block py-5" alt='jacket'></img>
+            <div className='mx-auto d-grid col-8 col-md-6 py-5'>
+                <img src={outline} alt='jacket' className='d-grid col-12'></img>
+                <div id="collar" className="collar1 d-grid col-12"></div>
+                <div id="closure" className="closure1 d-grid col-12"></div>
+                <div id="pockets" className="pockets1 d-grid col-12"></div>
+                <div id="length" className="length1 d-grid col-12"></div>
+                <div id="bpocket" className="bpocket1 d-grid col-12"></div>
             </div>
             <div className="d-grid col-12 py-5">
                 <div className="btn-group" role="group" aria-label="Jacket attribute selectors">
@@ -44,11 +50,5 @@ const Customizer = () => {
   
   export default Customizer;
 
-        // <div>
-        //     <div id="outline"></div>
-        //     <div id="collar" className="eyes1"></div>
-        //     <div id="closure" className="ears1"></div>
-        //     <div id="pockets" className="nose1"></div>
-        //     <div id="length" className="mouth1"></div>
-        //     <div id="bpocket" className="clothes1"></div>
-        // </div>
+
+//<div id="outline"></div>
