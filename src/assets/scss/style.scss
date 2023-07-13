@@ -1,0 +1,42 @@
+$items: ("closure": 2, "collar": 3, "length": 3, "pockets": 2, "bpocket": 1);
+
+@each $item, $total in $items {
+    @for $i from 1 through $total {
+        .#{$item}#{$i} {
+            background-image: url(../img/#{$item}/#{$item}#{$i}.svg);
+        }
+    }
+}
+
+#outline {
+    position:absolute;
+    width:300px;   /* width of actual image */
+    height:249px; /* height of actual image */
+    background-image: url("../img/outline.svg");
+    background-repeat: no-repeat;
+}
+
+#bpocket {
+    width:794px;   /* width of actual image */
+    height:1123px; /* height of actual image */
+}
+
+#collar {
+    width:794px;   /* width of actual image */
+    height:1123px; /* height of actual image */
+}
+
+#closure {
+    width:794px;   /* width of actual image */
+    height:1123px; /* height of actual image */
+}
+
+#length {
+    width:794px;   /* width of actual image */
+    height:1123px; /* height of actual image */
+}
+
+#pockets {
+    width:794px;   /* width of actual image */
+    height:1123px; /* height of actual image */
+}

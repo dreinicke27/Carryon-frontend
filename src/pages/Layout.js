@@ -3,9 +3,9 @@ import { Outlet, Link } from "react-router-dom";
 const Layout = () => {
     return (
       <>
-<nav className='navbar navbar-expand-md navbar-dark bg-dark'>
+<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
   <div className='container'>
-      <a href='#../App.js' className='navbar-brand'>
+      <a href='#./Home.js' className='navbar-brand'>
           <span>
               Carry On 
           </span>
