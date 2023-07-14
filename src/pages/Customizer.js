@@ -54,7 +54,7 @@ const Customizer = () => {
                     </button>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-outline-dark col-12 btn-lg">Finish Order</button>
+                    <button type="button" className="btn btn-outline-dark col-12 btn-lg" data-bs-toggle="modal" data-bs-target="#finishOrder">Finish Order</button>
                 </div>
             </div>
             </div>
@@ -74,7 +74,37 @@ const Customizer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="modal fade" id="finishOrder" tabindex="-1" aria-labelledby="finishOrder" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="finishOrder">Size Chart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Example textarea</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                    </div>
+                </div>
+            </div>   
+        </div> 
     );
   };
   
