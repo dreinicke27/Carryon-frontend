@@ -5,6 +5,7 @@ import collar1 from '../assets/img/collar/collar1.svg';
 import closure1 from '../assets/img/closure/closure1.svg';
 import pockets1 from '../assets/img/pockets/pockets1.svg';
 import length1 from '../assets/img/length/length1.svg';
+import SizeChart from '../components/SizeChart';
 
 const Customizer = () => {
 
@@ -14,7 +15,9 @@ const Customizer = () => {
         <div className='container'> 
             <h1 className='py-5'>CUSTOMIZER</h1>
             <div>
-                <p><a href="#../components/SizeChart" className="link-secondary">size chart</a></p>
+                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#sizeChart">
+                    Size Chart                
+                </button>
             </div>
             <div className='row py-5'>
             <div className='mx-auto d-grid col-8 col-md-6 py-5 position-relative'>
@@ -54,6 +57,22 @@ const Customizer = () => {
                     <button type="button" className="btn btn-outline-dark col-12 btn-lg">Finish Order</button>
                 </div>
             </div>
+            </div>
+            <div class="modal fade" id="sizeChart" tabindex="-1" aria-labelledby="sizeChart" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="sizeChart">Size Chart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <SizeChart />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

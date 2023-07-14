@@ -1,10 +1,6 @@
 import { Outlet, NavLink } from "react-router-dom";
 
 const Layout = () => {
-  // const activeState = ({ isActive }) => {
-  //   return isActive ? 'nav-link active' : 'nav-link';
-  // };
-
     return (
       <>
 <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -34,7 +30,7 @@ const Layout = () => {
       </div>
   </div>
 </nav>
-  
+
         <Outlet />
       </>
     )
