@@ -1,6 +1,10 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const Layout = () => {
+  // const activeState = ({ isActive }) => {
+  //   return isActive ? 'nav-link active' : 'nav-link';
+  // };
+
     return (
       <>
 <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -18,13 +22,13 @@ const Layout = () => {
       <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
            <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to="/" className="nav-link">Home</Link>
+                <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Home</NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/customizer" className="nav-link">Customizer</Link>
+                <NavLink to="/customizer" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Customizer</NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/cart" className="nav-link">Cart</Link>
+                <NavLink to="/cart" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Cart</NavLink>
               </li>
           </ul>
       </div>
@@ -37,11 +41,3 @@ const Layout = () => {
   };
   
   export default Layout;
-
-//<a className="nav-link" href="#../App.js">Home</a>
-//<li className="nav-item">
-//    <a className="nav-link" href="#../App.js">Shop Pre-Made</a>
-//</li>
-//<li className="nav-item">
-//<Link to="/about" className="nav-link">About</Link>
-//</li>
