@@ -6,7 +6,7 @@ const ItemInCart = () => {
                 <div className='col-auto'>
                     <img src={jacket} alt='jacket'/>
                 </div>
-                <div className='col-auto'>
+                <div className='col'>
                     <h5>Custom Jacket</h5>
                     <p className="text-muted">$XXX</p>
                     <button type="button" class="btn btn-outline-dark">Remove</button>
