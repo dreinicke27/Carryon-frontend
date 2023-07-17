@@ -1,4 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
+import logo from '../assets/img/logo icon.svg';
 
 const Layout = () => {
     return (
@@ -7,7 +8,7 @@ const Layout = () => {
   <div className='container'>
       <a href='/' className='navbar-brand'>
           <span>
-              Carry On 
+              <img src={logo} className='img-fluid' alt='Carry On logo' /> 
           </span>
       </a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 
