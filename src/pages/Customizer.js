@@ -38,27 +38,59 @@ const Customizer = () => {
             </div>
             <div className='row py-5 my-5'> 
             <div className="d-grid col-12 py-5">
-                <div className="btn-group" role="group" aria-label="Jacket attribute selectors">
-                    <button type="button" className="btn btn-outline-dark">
+                <div className="btn-group dropup" role="group" aria-label="Jacket attribute selectors">
+                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <span><small className="text-muted">Size</small></span>
-                        <span><p className="h6">Medium</p></span>
+                        <span><p className="h6">Small</p></span>
                     </button>
-                    <button type="button" className="btn btn-outline-dark">
+                    <ul className="dropdown-menu">
+                        <li className="dropdown-item active bg-dark">S</li>
+                        <li className="dropdown-item">M</li>
+                        <li className="dropdown-item">L</li>
+                        <li className="dropdown-item">XL</li>
+                        <li className="dropdown-item">XXL</li>
+                    </ul>
+                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <span><small className="text-muted">Length</small></span>
                         <span><p className="h6">Short</p></span>
                     </button>
-                    <button type="button" className="btn btn-outline-dark">
+                    <ul className="dropdown-menu">
+                        <li className="dropdown-item active bg-dark">Short</li>
+                        <li className="dropdown-item">Mid</li>
+                        <li className="dropdown-item">Long</li>
+                    </ul>
+                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <span><small className="text-muted">Collar</small></span>
                         <span><p className="h6">Pointed</p></span>
                     </button>
-                    <button type="button" className="btn btn-outline-dark">
+                    <ul className="dropdown-menu">
+                        <li className="dropdown-item active bg-dark">Pointed</li>
+                        <li className="dropdown-item">Round</li>
+                        <li className="dropdown-item">None</li>
+                    </ul>
+                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <span><small className="text-muted">Pockets</small></span>
                         <span><p className="h6">Outside</p></span>
                     </button>
-                    <button type="button" className="btn btn-outline-dark">
+                    <ul className="dropdown-menu">
+                        <li className="dropdown-item active bg-dark">Outside</li>
+                        <li className="dropdown-item">Inside</li>
+
+                    </ul>
+                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <span><small className="text-muted">Closure</small></span>
                         <span><p className="h6">Buttons</p></span>
                     </button>
+                    <ul className="dropdown-menu">
+                        <li className="dropdown-item active bg-dark">Buttons</li>
+                        <li className="dropdown-item">Zipper</li>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked"/>
+                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                Breast Pocket
+                            </label>
+                            </div>
+                    </ul>
                 </div>
                 <div>
                     <button type="button" className="btn btn-outline-dark col-12 btn-lg" data-bs-toggle="modal" data-bs-target="#finishOrder">Finish Order</button>

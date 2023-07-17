@@ -8,7 +8,7 @@ const Layout = () => {
   <div className='container'>
       <a href='/' className='navbar-brand'>
           <span>
-              <img src={logo} className='img-fluid' alt='Carry On logo' /> 
+              <img src={logo} height="30" alt='Carry On logo' /> 
           </span>
       </a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 

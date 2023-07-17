@@ -1,7 +1,10 @@
+import ItemInCart from "../components/ItemInCart.js";
+
 const Cart = () => {
     return (
       <div className="container py-5">
-      <h1>CART</h1>
+      <h1 className="pb-5">CART</h1>
+      <ItemInCart />
       <form className="row g-3 py-5">
         <h4>Shipping Information</h4>
         <div className="col-md-6">
