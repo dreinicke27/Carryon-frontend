@@ -5,7 +5,7 @@ const Layout = () => {
       <>
 <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
   <div className='container'>
-      <a href='#./Home.js' className='navbar-brand'>
+      <a href='/' className='navbar-brand'>
           <span>
               Carry On 
           </span>

@@ -1,10 +1,10 @@
 const SizeChart = () => {
 
     return (
-        <table class="table table-sm">
+        <table className="table table-sm">
             <thead>
                 <tr>
-                    <th scope="row" colspan="5">Body Measurement (inches)</th>
+                    <th scope="row" colSpan="5">Body Measurement (inches)</th>
                 </tr>
                 <tr>
                 <th scope="col"></th>

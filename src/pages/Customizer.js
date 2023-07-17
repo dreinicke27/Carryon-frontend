@@ -1,31 +1,38 @@
-import '../assets/scss/style.scss';
+//import '../assets/scss/style.scss';
 import outline from '../assets/img/outline.svg';
 import bpocket1 from '../assets/img/bpocket/bpocket1.svg';
-import collar1 from '../assets/img/collar/collar1.svg';
-import closure1 from '../assets/img/closure/closure1.svg';
-import pockets1 from '../assets/img/pockets/pockets1.svg';
-import length1 from '../assets/img/length/length1.svg';
 import SizeChart from '../components/SizeChart';
 
 const Customizer = () => {
-
+    const importAll = (r) => {
+        let images = {};
+        r.keys().map((item) => { 
+            return images[item.replace('./', '')] = r(item); 
+        });
+        return images;
+      };
+      
+      const closures = importAll(require.context('../assets/img/closure', false, /\.(png|jpe?g|svg)$/));
+      const collars = importAll(require.context('../assets/img/collar', false, /\.(png|jpe?g|svg)$/));
+      const lengths = importAll(require.context('../assets/img/length', false, /\.(png|jpe?g|svg)$/));
+      const pockets = importAll(require.context('../assets/img/pockets', false, /\.(png|jpe?g|svg)$/));
 
 
     return (
         <div className='container'> 
             <h1 className='py-5'>CUSTOMIZER</h1>
             <div>
-                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#sizeChart">
+                <button type="button" className="btn btn-link" data-bs-toggle="modal" data-bs-target="#sizeChart">
                     Size Chart                
                 </button>
             </div>
             <div className='row py-5'>
             <div className='mx-auto d-grid col-8 col-md-6 py-5 position-relative'>
                 <img src={outline} alt='jacket' className='d-grid col-12 position-absolute'></img>
-                <img src={collar1} alt='collar' className="d-grid col-12 position-absolute"></img>
-                <img src={closure1} alt='closure' className="d-grid col-12 position-absolute"></img>
-                <img src={pockets1} alt='pockets' className="d-grid col-12 position-absolute"></img>
-                <img src={length1} alt='length' className="d-grid col-12 position-absolute"></img>
+                <img src={collars['collar1.svg']} alt='collar' className="d-grid col-12 position-absolute"></img>
+                <img src={closures['closure1.svg']} alt='closure' className="d-grid col-12 position-absolute"></img>
+                <img src={pockets['pockets1.svg']} alt='pockets' className="d-grid col-12 position-absolute"></img>
+                <img src={lengths['length1.svg']} alt='length' className="d-grid col-12 position-absolute"></img>
                 <img src={bpocket1} alt='breastpocket'className="d-grid col-12 position-absolute"></img>
             </div>
             </div>
@@ -58,48 +65,50 @@ const Customizer = () => {
                 </div>
             </div>
             </div>
-            <div class="modal fade" id="sizeChart" tabindex="-1" aria-labelledby="sizeChart" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="sizeChart">Size Chart</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="sizeChart" tabIndex="-1" aria-labelledby="sizeChart" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="sizeChart">Size Chart</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <SizeChart />
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="finishOrder" tabindex="-1" aria-labelledby="finishOrder" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="finishOrder">Size Chart</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="finishOrder" tabIndex="-1" aria-labelledby="finishOrder" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="finishOrder">Finish Order</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <form>
-                            <div class="form-group">
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option selected>Open this select menu</option>
+                            <div className="form-group pb-3">
+                                <label htmlFor="FabricSelect">Fabric</label>
+                                <select className="form-select form-select-sm" aria-label=".form-select-sm example" id="FabricSelect">
+                                    <option selected>Choose one</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Example textarea</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <div className="form-group pb-3">
+                                <label htmlFor="FormControlTextarea1">Notes</label>
+                                <textarea className="form-control" id="FormControlTextarea1" rows="3"></textarea>
                             </div>
                         </form>
                     </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-outline-dark">Add to Cart</button>
                             </div>
                     </div>
                 </div>
