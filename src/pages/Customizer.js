@@ -1,7 +1,8 @@
 //import '../assets/scss/style.scss';
 import outline from '../assets/img/outline.svg';
-import bpocket1 from '../assets/img/bpocket/bpocket1.svg';
+import bpocketImg from '../assets/img/bpocket/bpocket.svg';
 import SizeChart from '../components/SizeChart';
+import { useState } from 'react';
 
 const Customizer = () => {
     const importAll = (r) => {
@@ -16,7 +17,52 @@ const Customizer = () => {
       const collars = importAll(require.context('../assets/img/collar', false, /\.(png|jpe?g|svg)$/));
       const lengths = importAll(require.context('../assets/img/length', false, /\.(png|jpe?g|svg)$/));
       const pockets = importAll(require.context('../assets/img/pockets', false, /\.(png|jpe?g|svg)$/));
+      const sizes = {S: 'S', M: 'M', L: 'L', XL: 'XL', XXL: 'XXL'};
 
+      //collars = {pointed.svg: ..., none.svg:..., round.svg: ...},
+      const parts = {
+        closure: closures,
+        collar: collars, 
+        length: lengths,
+        pockets: pockets, 
+        size: sizes,  
+      }
+
+      const initialAttributes = {
+        size: 'S',
+        collar: 'Pointed', 
+        closure: 'Buttons', 
+        pockets: 'Outside', 
+        length: 'Short', 
+        bpocket: false, 
+        fabric: null, 
+        notes: null, 
+        price: 150
+      };
+
+      const findImage = (part, selection) => {
+        const svg = selection.toLowerCase()+'.svg';
+        const image = parts[part][svg];
+        return image;
+      };
+
+      const [attributes, setAttributes] = useState(initialAttributes);
+
+      const bpocket = attributes.bpocket ? bpocketImg : outline;
+
+      const onChange = (event) => {
+        const newAttributes = {
+            ...attributes,
+            [event.target.name]: event.target.value,
+          };
+          setAttributes(newAttributes);
+      };
+
+      const onCheck = (event) => {
+        const pocketCheck = !attributes.bpocket;
+        const newAttributes = {...attributes, bpocket:pocketCheck};
+        setAttributes(newAttributes);
+      }
 
     return (
         <div className='container'> 
@@ -27,21 +73,21 @@ const Customizer = () => {
                 </button>
             </div>
             <div>
-            <div className='mx-auto d-grid col-8 col-md-6 py-5 position-relative'>
-                <img src={outline} alt='jacket' className='col-12 position-absolute'></img>
-                <img src={collars['collar1.svg']} alt='collar' className="col-12 position-absolute"></img>
-                <img src={closures['closure1.svg']} alt='closure' className="col-12 position-absolute"></img>
-                <img src={pockets['pockets1.svg']} alt='pockets' className="col-12 position-absolute"></img>
-                <img src={lengths['length1.svg']} alt='length' className="col-12 position-absolute"></img>
-                <img src={bpocket1} alt='breastpocket'className="col-12 position-absolute"></img>
+            <div className='mx-auto d-grid col-7 col-md-5 position-relative'>
+                <img src={outline} alt='jacket' className='col-12 position-relative'></img>
+                <img src={findImage('collar', attributes.collar)} alt='collar' className="col-12 position-absolute"></img>
+                <img src={findImage('closure', attributes.closure)} alt='closure' className="col-12 position-absolute"></img>
+                <img src={findImage('pockets', attributes.pockets)} alt='pockets' className="col-12 position-absolute"></img>
+                <img src={findImage('length', attributes.length)} alt='length' className="col-12 position-absolute"></img>
+                <img src={bpocket} alt='breastpocket'className="col-12 position-absolute"></img>
             </div>
             </div>
             <div> 
-                <div className="d-grid col-12 py-5">
+                <div className="d-grid col-12 pb-5">
                     <div className="btn-group dropup" role="group" aria-label="Jacket attribute selectors">
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='size'>
                             <span><small className="text-muted">Size</small></span>
-                            <span><p className="h6">Small</p></span>
+                            <span><p className="h6">{attributes.size}</p></span>
                         </button>
                         <ul className="dropdown-menu">
                             <li className="dropdown-item active bg-dark">S</li>
@@ -50,46 +96,45 @@ const Customizer = () => {
                             <li className="dropdown-item">XL</li>
                             <li className="dropdown-item">XXL</li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='length'>
                             <span><small className="text-muted">Length</small></span>
-                            <span><p className="h6">Short</p></span>
+                            <span><p className="h6">{attributes.length}</p></span>
                         </button>
                         <ul className="dropdown-menu">
                             <li className="dropdown-item active bg-dark">Short</li>
                             <li className="dropdown-item">Mid</li>
                             <li className="dropdown-item">Long</li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='collar'>
                             <span><small className="text-muted">Collar</small></span>
-                            <span><p className="h6">Pointed</p></span>
+                            <span><p className="h6">{attributes.collar}</p></span>
                         </button>
                         <ul className="dropdown-menu">
                             <li className="dropdown-item active bg-dark">Pointed</li>
                             <li className="dropdown-item">Round</li>
                             <li className="dropdown-item">None</li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='pockets'>
                             <span><small className="text-muted">Pockets</small></span>
-                            <span><p className="h6">Outside</p></span>
+                            <span><p className="h6">{attributes.pockets}</p></span>
                         </button>
                         <ul className="dropdown-menu">
                             <li className="dropdown-item active bg-dark">Outside</li>
                             <li className="dropdown-item">Inside</li>
-
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={onCheck}/>
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
+                                    Breast Pocket
+                                </label>
+                            </div>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='closure'>
                             <span><small className="text-muted">Closure</small></span>
-                            <span><p className="h6">Buttons</p></span>
+                            <span><p className="h6">{attributes.closure}</p></span>
                         </button>
                         <ul className="dropdown-menu">
                             <li className="dropdown-item active bg-dark">Buttons</li>
                             <li className="dropdown-item">Zipper</li>
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked"/>
-                                <label className="form-check-label" htmlFor="flexCheckChecked">
-                                    Breast Pocket
-                                </label>
-                                </div>
                         </ul>
                     </div>
                     <div>

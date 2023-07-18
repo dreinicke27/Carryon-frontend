@@ -9,7 +9,7 @@ const ItemInCart = () => {
                 <div className='col'>
                     <h5>Custom Jacket</h5>
                     <p className="text-muted">$XXX</p>
-                    <button type="button" class="btn btn-outline-dark">Remove</button>
+                    <button type="button" className="btn btn-outline-dark">Remove</button>
                 </div>
             </div>
     );}

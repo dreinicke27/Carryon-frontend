@@ -1,6 +1,7 @@
 import ItemInCart from "../components/ItemInCart.js";
 
 const Cart = () => {
+
     return (
       <div className="container py-5">
       <h1 className="pb-5">CART</h1>
@@ -30,7 +31,7 @@ const Cart = () => {
         <div className="col-md-4">
           <label htmlFor="inputState" className="form-label">State</label>
           <select id="inputState" className="form-select">
-            <option selected>Choose...</option>
+            <option defaultValue>Choose...</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -123,3 +124,20 @@ const Cart = () => {
       )};
   
   export default Cart;
+
+  // const itemComponents = props.data.map((item) => {
+  //   return (
+  //     <ItemInCart
+  //       size={item.name}
+  //       collar={item.cuisine}
+  //       length={item.rating}
+  //       closure={item.distance_from_ada}
+  //       pockets={item.pockets}
+  //       bpocket={item.bpocket}
+  //       price={item.price}
+  //       fabric={item.fabric}
+  //       notes={item.notes}
+  //       deleteItem={props.deleteItem}
+  //     />
+  //   );
+  // });
