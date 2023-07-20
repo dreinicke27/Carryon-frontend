@@ -1,4 +1,3 @@
-//import '../assets/scss/style.scss';
 import outline from '../assets/img/outline.svg';
 import bpocketImg from '../assets/img/bpocket/bpocket.svg';
 import SizeChart from '../components/SizeChart';
@@ -53,10 +52,14 @@ const Customizer = () => {
       const onChange = (event) => {
         const newAttributes = {
             ...attributes,
-            [event.target.name]: event.target.value,
+            [event.target.value]: event.target.label,
           };
           setAttributes(newAttributes);
+          //find way to close dropdown 
       };
+
+      //write function to assign active bg-dark to only the correct dropdown-item
+
 
       const onCheck = (event) => {
         const pocketCheck = !attributes.bpocket;
@@ -85,42 +88,42 @@ const Customizer = () => {
             <div> 
                 <div className="d-grid col-12 pb-5">
                     <div className="btn-group dropup" role="group" aria-label="Jacket attribute selectors">
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='size'>
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='sizeDrop' data-bs-toggle="dropdown" aria-expanded="false">
                             <span><small className="text-muted">Size</small></span>
                             <span><p className="h6">{attributes.size}</p></span>
                         </button>
-                        <ul className="dropdown-menu">
-                            <li className="dropdown-item active bg-dark">S</li>
-                            <li className="dropdown-item">M</li>
-                            <li className="dropdown-item">L</li>
-                            <li className="dropdown-item">XL</li>
-                            <li className="dropdown-item">XXL</li>
+                        <ul className="dropdown-menu"  aria-labelledby="sizeDrop" onClick={onChange}>
+                            <option className="dropdown-item active bg-dark" value='size'>S</option>
+                            <option className="dropdown-item" value='size'>M</option>
+                            <option className="dropdown-item" value='size'>L</option>
+                            <option className="dropdown-item" value='size'>XL</option>
+                            <option className="dropdown-item" value='size'>XXL</option>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='length'>
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='lengthDrop' data-bs-toggle="dropdown" aria-expanded="false">
                             <span><small className="text-muted">Length</small></span>
                             <span><p className="h6">{attributes.length}</p></span>
                         </button>
-                        <ul className="dropdown-menu">
-                            <li className="dropdown-item active bg-dark">Short</li>
-                            <li className="dropdown-item">Mid</li>
-                            <li className="dropdown-item">Long</li>
+                        <ul className="dropdown-menu" aria-labelledby="lengthDrop" onClick={onChange}>
+                            <option className="dropdown-item active bg-dark" value='length'>Short</option>
+                            <option className="dropdown-item" value='length'>Mid</option>
+                            <option className="dropdown-item" value='length'>Long</option>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='collar'>
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='collarDrop' data-bs-toggle="dropdown" aria-expanded="false">
                             <span><small className="text-muted">Collar</small></span>
                             <span><p className="h6">{attributes.collar}</p></span>
                         </button>
-                        <ul className="dropdown-menu">
-                            <li className="dropdown-item active bg-dark">Pointed</li>
-                            <li className="dropdown-item">Round</li>
-                            <li className="dropdown-item">None</li>
+                        <ul className="dropdown-menu" aria-labelledby='collarDrop' onClick={onChange}>
+                            <option className="dropdown-item active bg-dark" value='collar'>Pointed</option>
+                            <option className="dropdown-item" value='collar'>Round</option>
+                            <option className="dropdown-item" value='collar'>None</option>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='pockets'>
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <span><small className="text-muted">Pockets</small></span>
                             <span><p className="h6">{attributes.pockets}</p></span>
                         </button>
-                        <ul className="dropdown-menu">
-                            <li className="dropdown-item active bg-dark">Outside</li>
-                            <li className="dropdown-item">Inside</li>
+                        <ul className="dropdown-menu" onClick={onChange}>
+                            <option className="dropdown-item active bg-dark" value='pockets'>Outside</option>
+                            <option className="dropdown-item" value='pockets'>Inside</option>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={onCheck}/>
                                 <label className="form-check-label" htmlFor="flexCheckChecked">
@@ -128,13 +131,13 @@ const Customizer = () => {
                                 </label>
                             </div>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" name='closure'>
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <span><small className="text-muted">Closure</small></span>
                             <span><p className="h6">{attributes.closure}</p></span>
                         </button>
-                        <ul className="dropdown-menu">
-                            <li className="dropdown-item active bg-dark">Buttons</li>
-                            <li className="dropdown-item">Zipper</li>
+                        <ul className="dropdown-menu" onClick={onChange}>
+                            <option className="dropdown-item active bg-dark" value='closure'>Buttons</option>
+                            <option className="dropdown-item" value='closure'>Zipper</option>
                         </ul>
                     </div>
                     <div>
