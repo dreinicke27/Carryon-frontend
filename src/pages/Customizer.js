@@ -39,33 +39,41 @@ const Customizer = () => {
         price: 150
       };
 
+      const [attributes, setAttributes] = useState(initialAttributes);
+      let pocketCheck = attributes.bpocket;
+      
+      const onCheck = () => {
+        pocketCheck = !attributes.bpocket;
+        return pocketCheck;
+      };
+      
+      const onChange = (event) => {
+        if (pocketCheck === attributes.bpocket) {
+            const newAttributes = {
+                ...attributes,
+                [event.target.value]: event.target.name
+              };
+              setAttributes(newAttributes);
+        } else {
+            const newAttributes = {
+                ...attributes,
+                [event.target.value]: event.target.name, bpocket:pocketCheck
+              };
+              setAttributes(newAttributes);
+        };
+      };
+
+      //write function to assign active bg-dark to only the correct dropdown-item
+
+      
+
+      const bpocketShown = attributes.bpocket ? bpocketImg : outline;
+
       const findImage = (part, selection) => {
         const svg = selection.toLowerCase()+'.svg';
         const image = parts[part][svg];
         return image;
       };
-
-      const [attributes, setAttributes] = useState(initialAttributes);
-
-      const bpocket = attributes.bpocket ? bpocketImg : outline;
-
-      const onChange = (event) => {
-        const newAttributes = {
-            ...attributes,
-            [event.target.value]: event.target.label,
-          };
-          setAttributes(newAttributes);
-          //find way to close dropdown 
-      };
-
-      //write function to assign active bg-dark to only the correct dropdown-item
-
-
-      const onCheck = (event) => {
-        const pocketCheck = !attributes.bpocket;
-        const newAttributes = {...attributes, bpocket:pocketCheck};
-        setAttributes(newAttributes);
-      }
 
     return (
         <div className='container'> 
@@ -82,62 +90,62 @@ const Customizer = () => {
                 <img src={findImage('closure', attributes.closure)} alt='closure' className="col-12 position-absolute"></img>
                 <img src={findImage('pockets', attributes.pockets)} alt='pockets' className="col-12 position-absolute"></img>
                 <img src={findImage('length', attributes.length)} alt='length' className="col-12 position-absolute"></img>
-                <img src={bpocket} alt='breastpocket'className="col-12 position-absolute"></img>
+                <img src={bpocketShown} alt='breastpocket'className="col-12 position-absolute"></img>
             </div>
             </div>
             <div> 
-                <div className="d-grid col-12 pb-5">
+                <div className="d-grid col-12 py-5">
                     <div className="btn-group dropup" role="group" aria-label="Jacket attribute selectors">
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='sizeDrop' data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='sizeDrop' data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             <span><small className="text-muted">Size</small></span>
                             <span><p className="h6">{attributes.size}</p></span>
                         </button>
                         <ul className="dropdown-menu"  aria-labelledby="sizeDrop" onClick={onChange}>
-                            <option className="dropdown-item active bg-dark" value='size'>S</option>
-                            <option className="dropdown-item" value='size'>M</option>
-                            <option className="dropdown-item" value='size'>L</option>
-                            <option className="dropdown-item" value='size'>XL</option>
-                            <option className="dropdown-item" value='size'>XXL</option>
+                            <li><button className="dropdown-item active bg-dark" value='size' name='S'>S</button></li>
+                            <li><button className="dropdown-item" value='size' name='M'>M</button></li>
+                            <li><button className="dropdown-item" value='size' name='L'>L</button></li>
+                            <li><button className="dropdown-item" value='size' name='XL'>XL</button></li>
+                            <li><button className="dropdown-item" value='size' name='XXL'>XXL</button></li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='lengthDrop' data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='lengthDrop' data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             <span><small className="text-muted">Length</small></span>
                             <span><p className="h6">{attributes.length}</p></span>
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="lengthDrop" onClick={onChange}>
-                            <option className="dropdown-item active bg-dark" value='length'>Short</option>
-                            <option className="dropdown-item" value='length'>Mid</option>
-                            <option className="dropdown-item" value='length'>Long</option>
+                            <li><button className="dropdown-item active bg-dark" value='length' name='Short'>Short</button></li>
+                            <li><button className="dropdown-item" value='length' name='Mid'>Mid</button></li>
+                            <li><button className="dropdown-item" value='length' name='Long'>Long</button></li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='collarDrop' data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" id='collarDrop' data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             <span><small className="text-muted">Collar</small></span>
                             <span><p className="h6">{attributes.collar}</p></span>
                         </button>
                         <ul className="dropdown-menu" aria-labelledby='collarDrop' onClick={onChange}>
-                            <option className="dropdown-item active bg-dark" value='collar'>Pointed</option>
-                            <option className="dropdown-item" value='collar'>Round</option>
-                            <option className="dropdown-item" value='collar'>None</option>
+                            <li><button className="dropdown-item active bg-dark" value='collar' name='Pointed'>Pointed</button></li>
+                            <li><button className="dropdown-item" value='collar' name='Round'>Round</button></li>
+                            <li><button className="dropdown-item" value='collar' name='None'>None</button></li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             <span><small className="text-muted">Pockets</small></span>
                             <span><p className="h6">{attributes.pockets}</p></span>
                         </button>
                         <ul className="dropdown-menu" onClick={onChange}>
-                            <option className="dropdown-item active bg-dark" value='pockets'>Outside</option>
-                            <option className="dropdown-item" value='pockets'>Inside</option>
-                            <div className="form-check">
+                            <li><button className="dropdown-item active bg-dark" value='pockets' name='Outside'>Outside</button></li>
+                            <li><button className="dropdown-item" value='pockets' name='Inside'>Inside</button></li>
+                            <li><div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={onCheck}/>
                                 <label className="form-check-label" htmlFor="flexCheckChecked">
                                     Breast Pocket
                                 </label>
-                            </div>
+                            </div></li>
                         </ul>
-                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" className="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             <span><small className="text-muted">Closure</small></span>
                             <span><p className="h6">{attributes.closure}</p></span>
                         </button>
                         <ul className="dropdown-menu" onClick={onChange}>
-                            <option className="dropdown-item active bg-dark" value='closure'>Buttons</option>
-                            <option className="dropdown-item" value='closure'>Zipper</option>
+                            <li><button className="dropdown-item active bg-dark" value='closure' name='Buttons'>Buttons</button></li>
+                            <li><button className="dropdown-item" value='closure' name='Zipper'>Zipper</button></li>
                         </ul>
                     </div>
                     <div>
