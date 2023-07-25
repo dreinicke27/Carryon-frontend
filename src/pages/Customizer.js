@@ -43,6 +43,11 @@ const Customizer = () => {
       let pocketCheck = attributes.bpocket;
       
       const onCheck = () => {
+        if (attributes.bpocket === true) {
+            attributes.price -= 15;
+        } else {
+            attributes.price +=15;
+        }
         pocketCheck = !attributes.bpocket;
         return pocketCheck;
       };
@@ -75,6 +80,16 @@ const Customizer = () => {
         return image;
       };
 
+      const onSelect = (event) => {
+        const newAttributes = {...attributes, 'fabric':event.target.value};
+        setAttributes(newAttributes);
+      };
+
+      const addNotes = (event) => {
+        const newAttributes = {...attributes, 'notes':event.target.value};
+        setAttributes(newAttributes);
+      };
+
     return (
         <div className='container'> 
             <h1 className='py-5'>CUSTOMIZER</h1>
@@ -83,6 +98,7 @@ const Customizer = () => {
                     Size Chart                
                 </button>
             </div>
+            <h4 className='py-3'>Price: ${attributes.price}</h4>
             <div>
             <div className='mx-auto d-grid col-7 col-md-5 position-relative'>
                 <img src={outline} alt='jacket' className='col-12 position-relative'></img>
@@ -101,7 +117,7 @@ const Customizer = () => {
                             <span><p className="h6">{attributes.size}</p></span>
                         </button>
                         <ul className="dropdown-menu"  aria-labelledby="sizeDrop" onClick={onChange}>
-                            <li><button className="dropdown-item active bg-dark" value='size' name='S'>S</button></li>
+                            <li><button className="dropdown-item" value='size' name='S'>S</button></li>
                             <li><button className="dropdown-item" value='size' name='M'>M</button></li>
                             <li><button className="dropdown-item" value='size' name='L'>L</button></li>
                             <li><button className="dropdown-item" value='size' name='XL'>XL</button></li>
@@ -112,7 +128,7 @@ const Customizer = () => {
                             <span><p className="h6">{attributes.length}</p></span>
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="lengthDrop" onClick={onChange}>
-                            <li><button className="dropdown-item active bg-dark" value='length' name='Short'>Short</button></li>
+                            <li><button className="dropdown-item" value='length' name='Short'>Short</button></li>
                             <li><button className="dropdown-item" value='length' name='Mid'>Mid</button></li>
                             <li><button className="dropdown-item" value='length' name='Long'>Long</button></li>
                         </ul>
@@ -121,7 +137,7 @@ const Customizer = () => {
                             <span><p className="h6">{attributes.collar}</p></span>
                         </button>
                         <ul className="dropdown-menu" aria-labelledby='collarDrop' onClick={onChange}>
-                            <li><button className="dropdown-item active bg-dark" value='collar' name='Pointed'>Pointed</button></li>
+                            <li><button className="dropdown-item" value='collar' name='Pointed'>Pointed</button></li>
                             <li><button className="dropdown-item" value='collar' name='Round'>Round</button></li>
                             <li><button className="dropdown-item" value='collar' name='None'>None</button></li>
                         </ul>
@@ -130,7 +146,7 @@ const Customizer = () => {
                             <span><p className="h6">{attributes.pockets}</p></span>
                         </button>
                         <ul className="dropdown-menu" onClick={onChange}>
-                            <li><button className="dropdown-item active bg-dark" value='pockets' name='Outside'>Outside</button></li>
+                            <li><button className="dropdown-item" value='pockets' name='Outside'>Outside</button></li>
                             <li><button className="dropdown-item" value='pockets' name='Inside'>Inside</button></li>
                             <li><div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={onCheck}/>
@@ -144,7 +160,7 @@ const Customizer = () => {
                             <span><p className="h6">{attributes.closure}</p></span>
                         </button>
                         <ul className="dropdown-menu" onClick={onChange}>
-                            <li><button className="dropdown-item active bg-dark" value='closure' name='Buttons'>Buttons</button></li>
+                            <li><button className="dropdown-item" value='closure' name='Buttons'>Buttons</button></li>
                             <li><button className="dropdown-item" value='closure' name='Zipper'>Zipper</button></li>
                         </ul>
                     </div>
@@ -153,6 +169,7 @@ const Customizer = () => {
                     </div>
                 </div>
             </div>
+
             <div className="modal fade" id="sizeChart" tabIndex="-1" aria-labelledby="sizeChart" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -181,7 +198,7 @@ const Customizer = () => {
                         <form>
                             <div className="form-group pb-3">
                                 <label htmlFor="FabricSelect">Fabric</label>
-                                <select className="form-select form-select-sm" aria-label=".form-select-sm example" id="FabricSelect">
+                                <select className="form-select form-select-sm" aria-label=".form-select-sm example" id="FabricSelect" onChange={onSelect}>
                                     <option defaultValue>Choose one</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
@@ -190,7 +207,7 @@ const Customizer = () => {
                             </div>
                             <div className="form-group pb-3">
                                 <label htmlFor="FormControlTextarea1">Notes</label>
-                                <textarea className="form-control" id="FormControlTextarea1" rows="3"></textarea>
+                                <textarea className="form-control" id="FormControlTextarea1" rows="3" onChange={addNotes} placeholder="Help us understand exactly what you want! Need extra long sleeves? Like a particular bag pattern, or style? Want to add cuffs, pocket closures, or other extras?"></textarea>
                             </div>
                         </form>
                     </div>

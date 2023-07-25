@@ -6,6 +6,8 @@ import Customizer from "./pages/Customizer";
 import NoPage from "./pages/NoPage";
 
 function App() {
+  //onSubmit (add to cart) for modal (create an item in the cart...state lifted up)
+
   return (
     <BrowserRouter>
       <Routes>
