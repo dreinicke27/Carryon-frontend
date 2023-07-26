@@ -3,7 +3,7 @@ import bpocketImg from '../assets/img/bpocket/bpocket.svg';
 import SizeChart from '../components/SizeChart';
 import { useState } from 'react';
 
-const Customizer = () => {
+const Customizer = ({ onAddtoCart }) => {
     const importAll = (r) => {
         let images = {};
         r.keys().map((item) => { 
@@ -36,7 +36,7 @@ const Customizer = () => {
         bpocket: false, 
         fabric: null, 
         notes: null, 
-        price: 150
+        price: 165
       };
 
       const [attributes, setAttributes] = useState(initialAttributes);
@@ -93,12 +93,12 @@ const Customizer = () => {
     return (
         <div className='container'> 
             <h1 className='py-5'>CUSTOMIZER</h1>
+            <h4 className='py-3'>Price: ${attributes.price}</h4>
             <div>
-                <button type="button" className="btn btn-link" data-bs-toggle="modal" data-bs-target="#sizeChart">
+                <button type="button" className="btn btn-link py-3" data-bs-toggle="modal" data-bs-target="#sizeChart">
                     Size Chart                
                 </button>
             </div>
-            <h4 className='py-3'>Price: ${attributes.price}</h4>
             <div>
             <div className='mx-auto d-grid col-7 col-md-5 position-relative'>
                 <img src={outline} alt='jacket' className='col-12 position-relative'></img>
@@ -213,7 +213,7 @@ const Customizer = () => {
                     </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-outline-dark">Add to Cart</button>
+                                <button type="button" className="btn btn-outline-dark" onClick={() => {onAddtoCart(attributes)}}>Add to Cart</button>
                             </div>
                     </div>
                 </div>
@@ -223,3 +223,5 @@ const Customizer = () => {
   };
   
   export default Customizer;
+
+  

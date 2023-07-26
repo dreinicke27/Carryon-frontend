@@ -1,11 +1,29 @@
 import ItemInCart from "../components/ItemInCart.js";
 
-const Cart = () => {
+const Cart = ({ cartData }) => {
+  const itemComponents = cartData.map((item) => {
+    return (
+      <ItemInCart
+        key={item.id}
+        id={item.id}
+        size={item.size}
+        collar={item.collar}
+        length={item.length}
+        closure={item.closure}
+        pockets={item.pockets}
+        bpocket={item.bpocket}
+        price={item.price}
+        fabric={item.fabric}
+        notes={item.notes}
+        //deleteItem={props.deleteItem}
+      />
+    );
+  });
 
     return (
       <div className="container py-5">
       <h1 className="pb-5">CART</h1>
-      <ItemInCart />
+      {itemComponents}
       <form className="row g-3 py-5">
         <h4>Shipping Information</h4>
         <div className="col-md-6">
@@ -125,19 +143,4 @@ const Cart = () => {
   
   export default Cart;
 
-  // const itemComponents = props.data.map((item) => {
-  //   return (
-  //     <ItemInCart
-  //       size={item.name}
-  //       collar={item.cuisine}
-  //       length={item.rating}
-  //       closure={item.distance_from_ada}
-  //       pockets={item.pockets}
-  //       bpocket={item.bpocket}
-  //       price={item.price}
-  //       fabric={item.fabric}
-  //       notes={item.notes}
-  //       deleteItem={props.deleteItem}
-  //     />
-  //   );
-  // });
+  
