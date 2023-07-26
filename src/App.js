@@ -8,21 +8,36 @@ import { useState } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
-  let cartID = -1;
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   //add to cart needs to start a checkout session w/ stripe 
   const onAddtoCart = (newItem) => {
-    cartID += 1;
+    let cartID = -1;
+    if (cart.length === 0) {
+       cartID = 0;
+    } else {
+      cartID = Math.max(...cart.map(item => item.id));
+      cartID += 1;
+    }
     const item = {...newItem, id:cartID}
     const newCartItems = cart.concat(item);
     console.log(newCartItems);
     setCart(newCartItems);
-    navigate("/cart");
+    return cartID;
+    //navigate("/cart");
   };
 
   //deleteItem for cart 
+  const deleteItem = (id) => {
+    const newItems = [];
+        for (let item of cart) {
+          if (item.id !== id) {
+            newItems.push(item);
+          }
+        }
+        setCart(newItems);
+  };
 
   return (
 
@@ -30,7 +45,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
-          <Route path="cart" element={<Cart cartData={cart}/>} />
+          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem}/>} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

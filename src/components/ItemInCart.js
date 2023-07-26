@@ -1,12 +1,12 @@
 import outline from '../assets/img/outline.svg';
 import bpocketImg from '../assets/img/bpocket/bpocket.svg';
 
-const ItemInCart = ({ size, collar, length, closure, pockets, bpocket, price, fabric, notes }) => {
-    const bpocketShown = bpocket ? bpocketImg : outline;
+const ItemInCart = ({ id, size, collar, length, closure, pockets, bpocket, price, fabric, notes, deleteItem }) => {
+    const bpocketShown = bpocket ? bpocketImg : 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=';
 
     return (
             <div className='row gx-5 py-5'>
-                <div className='col-auto position-relative'>
+                <div className='mx-auto d-grid col-7 col-md-5 position-relative'>
                     <img src={outline} alt='jacket' className='col-12 position-relative'></img>
                     <img src={require(`../assets/img/collar/${collar.toLowerCase()}.svg`)} alt='collar' className="col-12 position-absolute"></img>
                     <img src={require(`../assets/img/closure/${closure.toLowerCase()}.svg`)} alt='closure' className="col-12 position-absolute"></img>
@@ -20,7 +20,7 @@ const ItemInCart = ({ size, collar, length, closure, pockets, bpocket, price, fa
                     <p className="text-muted">Size: {size}</p>
                     <p className="text-muted">Fabric: {fabric}</p>
                     <p className="text-muted">Notes: {notes}</p>
-                    <button type="button" className="btn btn-outline-dark">Remove</button>
+                    <button type="button" className="btn btn-outline-dark" onClick={() => {deleteItem(id)}}>Remove</button>
                 </div>
             </div>
     );}

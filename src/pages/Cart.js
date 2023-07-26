@@ -1,6 +1,6 @@
 import ItemInCart from "../components/ItemInCart.js";
 
-const Cart = ({ cartData }) => {
+const Cart = ({ cartData, deleteItem }) => {
   const itemComponents = cartData.map((item) => {
     return (
       <ItemInCart
@@ -15,7 +15,7 @@ const Cart = ({ cartData }) => {
         price={item.price}
         fabric={item.fabric}
         notes={item.notes}
-        //deleteItem={props.deleteItem}
+        deleteItem={deleteItem}
       />
     );
   });
