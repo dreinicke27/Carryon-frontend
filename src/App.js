@@ -4,14 +4,14 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Customizer from "./pages/Customizer";
 import NoPage from "./pages/NoPage";
-import { useState } from "react";
+import Message from "./pages/Message";
+import { useState, useEffect } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  //add to cart needs to start a checkout session w/ stripe 
   const onAddtoCart = (newItem) => {
     let cartID = -1;
     if (cart.length === 0) {
@@ -22,11 +22,15 @@ function App() {
     }
     const item = {...newItem, id:cartID}
     const newCartItems = cart.concat(item);
-    console.log(newCartItems);
     setCart(newCartItems);
-    return cartID;
-    //navigate("/cart");
+    navigate("/cart");
   };
+
+  //submit action for checkout button 
+  //const onCheckout = () => {
+    //start check out session, go through process 
+    
+  //}
 
   //deleteItem for cart 
   const deleteItem = (id) => {
@@ -38,6 +42,26 @@ function App() {
         }
         setCart(newItems);
   };
+  
+  const [message, setMessage] = useState("");
+  
+  useEffect(() => {
+      // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+  
+    if (query.get("success")) {
+      setMessage("Order placed! You will receive an email confirmation.");
+    }
+  
+    if (query.get("canceled")) {
+      setMessage(
+        "Order canceled -- continue to shop around and checkout when you're ready."
+      );
+    }
+  }, []);
+
+  const messageOrCart = message ? (<Message message={message} />) : (<Cart cartData={cart} deleteItem={deleteItem}/>);
+
 
   return (
 
@@ -47,6 +71,7 @@ function App() {
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
           <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem}/>} />
           <Route path="*" element={<NoPage />} />
+          <Route path="message" element={messageOrCart} />
         </Route>
       </Routes>
 

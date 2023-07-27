@@ -213,7 +213,7 @@ const Customizer = ({ onAddtoCart }) => {
                     </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-outline-dark" onClick={() => {onAddtoCart(attributes)}}>Add to Cart</button>
+                                <button type="button" data-bs-dismiss="modal" className="btn btn-outline-dark" onClick={() => {onAddtoCart(attributes)}}>Add to Cart</button>
                             </div>
                     </div>
                 </div>
