@@ -4,8 +4,8 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Customizer from "./pages/Customizer";
 import NoPage from "./pages/NoPage";
-import Message from "./pages/Message";
-import { useState, useEffect } from "react";
+//import Message from "./pages/Message";
+import { useState } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -43,24 +43,24 @@ function App() {
         setCart(newItems);
   };
   
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
   
-  useEffect(() => {
-      // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
+  // useEffect(() => {
+  //     // Check to see if this is a redirect back from Checkout
+  //   const query = new URLSearchParams(window.location.search);
   
-    if (query.get("success")) {
-      setMessage("Order placed! You will receive an email confirmation.");
-    }
+  //   if (query.get("success")) {
+  //     setMessage("Order placed! You will receive an email confirmation.");
+  //   }
   
-    if (query.get("canceled")) {
-      setMessage(
-        "Order canceled -- continue to shop around and checkout when you're ready."
-      );
-    }
-  }, []);
+  //   if (query.get("canceled")) {
+  //     setMessage(
+  //       "Order canceled -- continue to shop around and checkout when you're ready."
+  //     );
+  //   }
+  // }, []);
 
-  const messageOrCart = message ? (<Message message={message} />) : (<Cart cartData={cart} deleteItem={deleteItem}/>);
+  // const messageOrCart = message ? (<Message message={message} />) : (<Cart cartData={cart} deleteItem={deleteItem}/>);
 
 
   return (
@@ -71,7 +71,6 @@ function App() {
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
           <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem}/>} />
           <Route path="*" element={<NoPage />} />
-          <Route path="message" element={messageOrCart} />
         </Route>
       </Routes>
 
