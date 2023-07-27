@@ -1,6 +1,6 @@
 import ItemInCart from "../components/ItemInCart.js";
 
-const Cart = ({ cartData, deleteItem }) => {
+const Cart = ({ cartData, deleteItem, checkout }) => {
   const itemComponents = cartData.map((item) => {
     return (
       <ItemInCart
@@ -26,14 +26,17 @@ const Cart = ({ cartData, deleteItem }) => {
       {itemComponents}
       
         <div className="col-12">
-          <form action="/create-checkout-session" method="POST">
-            <button type="submit" className="btn btn-dark">Checkout</button>
+          <form>
+            <button type="submit" className="btn btn-dark" onClick={checkout}>Checkout</button>
           </form>
         </div>
       </div>
       )};
   
   export default Cart;
+
+  //form needs to know about the backend...or just do an axios 
+  //action="/create-checkout-session" method="POST"
 
   // <form className="row g-3 py-5">
   //       <h4>Shipping Information</h4>

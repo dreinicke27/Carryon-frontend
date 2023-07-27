@@ -6,6 +6,7 @@ import Customizer from "./pages/Customizer";
 import NoPage from "./pages/NoPage";
 //import Message from "./pages/Message";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -27,10 +28,17 @@ function App() {
   };
 
   //submit action for checkout button 
-  //const onCheckout = () => {
-    //start check out session, go through process 
+  const onCheckout = () => {
+    //api call to start check out session - that calls the redirect 
+    axios.post('/http://localhost:4242/create-checkout-session')
+    .then((result) => {
+      console.log(result.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
     
-  //}
+  }
 
   //deleteItem for cart 
   const deleteItem = (id) => {
@@ -69,7 +77,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
-          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem}/>} />
+          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem} checkout={onCheckout}/>} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
