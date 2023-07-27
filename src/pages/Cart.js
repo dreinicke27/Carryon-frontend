@@ -26,8 +26,8 @@ const Cart = ({ cartData, deleteItem, checkout }) => {
       {itemComponents}
       
         <div className="col-12">
-          <form>
-            <button type="submit" className="btn btn-dark" onClick={checkout}>Checkout</button>
+          <form action="http://localhost:4242/create-checkout-session" method="POST">
+            <button type="submit" className="btn btn-dark" >Checkout</button>
           </form>
         </div>
       </div>
@@ -35,8 +35,6 @@ const Cart = ({ cartData, deleteItem, checkout }) => {
   
   export default Cart;
 
-  //form needs to know about the backend...or just do an axios 
-  //action="/create-checkout-session" method="POST"
 
   // <form className="row g-3 py-5">
   //       <h4>Shipping Information</h4>
