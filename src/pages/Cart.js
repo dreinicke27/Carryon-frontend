@@ -26,7 +26,7 @@ const Cart = ({ cartData, deleteItem, checkout }) => {
       {itemComponents}
       
         <div className="col-12">
-          <form action="https://carryon-backend.onrender.com/create-checkout-session" method="POST">
+          <form action="http://localhost:4242/create-checkout-session" method="POST">
             <button type="submit" className="btn btn-dark" >Checkout</button>
           </form>
         </div>
