@@ -5,7 +5,7 @@ import Cart from "./pages/Cart";
 import Customizer from "./pages/Customizer";
 import NoPage from "./pages/NoPage";
 import Success from "./pages/Success";
-import Failure from "./pages/Failure";
+import Cancel from "./pages/Cancel";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -65,7 +65,7 @@ function App() {
           <Route path="cart" element={<Cart cartData={cart} ip={ip} deleteItem={deleteItem}/>} />
           <Route path="*" element={<NoPage />} />
           <Route path="success" element={<Success />} />
-          <Route path="failure" element={<Failure />} />
+          <Route path="cancel" element={<Cancel />} />
         </Route>
       </Routes>
 
