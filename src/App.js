@@ -4,14 +4,31 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Customizer from "./pages/Customizer";
 import NoPage from "./pages/NoPage";
-//import Message from "./pages/Message";
-import { useState } from "react";
+import Success from "./pages/Success";
+import Failure from "./pages/Failure";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  //store cookie
+  const [ip, setIP] = useState([]);
+
+  const getData = async () => {
+    const res = await axios.get("https://api.ipify.org/?format=json");
+    console.log(res.data);
+    setIP(res.data.ip);
+  };
+
+  //just do once 
+  useEffect(() => {
+    getData()
+  }, []);
+
   const [cart, setCart] = useState([]);
 
   const navigate = useNavigate();
 
+  //add api call with ip as id 
   const onAddtoCart = (newItem) => {
     let cartID = -1;
     if (cart.length === 0) {
@@ -28,6 +45,7 @@ function App() {
 
 
   //deleteItem for cart 
+  //add api call with cookie as id 
   const deleteItem = (id) => {
     const newItems = [];
         for (let item of cart) {
@@ -38,34 +56,16 @@ function App() {
         setCart(newItems);
   };
   
-  // const [message, setMessage] = useState("");
-  
-  // useEffect(() => {
-  //     // Check to see if this is a redirect back from Checkout
-  //   const query = new URLSearchParams(window.location.search);
-  
-  //   if (query.get("success")) {
-  //     setMessage("Order placed! You will receive an email confirmation.");
-  //   }
-  
-  //   if (query.get("canceled")) {
-  //     setMessage(
-  //       "Order canceled -- continue to shop around and checkout when you're ready."
-  //     );
-  //   }
-  // }, []);
-
-  // const messageOrCart = message ? (<Message message={message} />) : (<Cart cartData={cart} deleteItem={deleteItem}/>);
-
-
   return (
 
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
-          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem}/>} />
+          <Route path="cart" element={<Cart cartData={cart} ip={ip} deleteItem={deleteItem}/>} />
           <Route path="*" element={<NoPage />} />
+          <Route path="success" element={<Success />} />
+          <Route path="failure" element={<Failure />} />
         </Route>
       </Routes>
 

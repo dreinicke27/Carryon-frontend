@@ -1,11 +1,12 @@
 import ItemInCart from "../components/ItemInCart.js";
 
-const Cart = ({ cartData, deleteItem, checkout }) => {
+const Cart = ({ cartData, deleteItem, ip }) => {
   const itemComponents = cartData.map((item) => {
     return (
       <ItemInCart
         key={item.id}
         id={item.id}
+        ip={ip}
         size={item.size}
         collar={item.collar}
         length={item.length}
@@ -27,7 +28,7 @@ const Cart = ({ cartData, deleteItem, checkout }) => {
       
         <div className="col-12">
           <form action="https://carryon-backend.onrender.com/create-checkout-session" method="POST">
-            <button type="submit" className="btn btn-dark" >Checkout</button>
+            <button type="submit" className="btn btn-dark">Checkout</button>
           </form>
         </div>
       </div>
