@@ -1,6 +1,6 @@
 import ItemInCart from "../components/ItemInCart.js";
 
-const Cart = ({ cartData, deleteItem }) => {
+const Cart = ({ cartData, deleteItem, onCheckout }) => {
   const itemComponents = cartData.map((item) => {
     return (
       <ItemInCart
@@ -38,8 +38,8 @@ const Cart = ({ cartData, deleteItem }) => {
       
       <div className="row">
         <div className="col-10">
-        <form action="https://carryon-backend.onrender.com/create-checkout-session" method="POST">
-            <button type='submit' className="btn btn-dark float-end">Checkout</button>
+        <form>
+            <button type='submit' className="btn btn-dark float-end" onSubmit={() => {onCheckout(cartData)}}>Checkout</button>
             </form>
         </div>
         </div>
@@ -50,4 +50,4 @@ const Cart = ({ cartData, deleteItem }) => {
 
  // "https://carryon-backend.onrender.com/create-checkout-session"
  // "localhost:4242/create-checkout-session"
- // 
+ // action="https://carryon-backend.onrender.com/create-checkout-session" method="POST"

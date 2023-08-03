@@ -31,7 +31,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  const API = "http://127.0.0.1:5000/cart"
+  const API = "https://carryon-backend.onrender.com/cart"
 
   //get all carts so that I can filter to find the right one
   const getCartData = () => {
@@ -55,6 +55,7 @@ function App() {
       if (cart.ip === ip && cart.completed === false) {
         const cartID = cart.id;
         setCartID(cartID);
+        
         axios.get(`${API}/${cartID}`)
         .then((result) => {
           console.log(result.data);
@@ -87,56 +88,73 @@ function App() {
   //`${API}/${}`
   //add api call to update existing cart to /cart/id put
   const onAddtoCart = (newItem) => {
-    // let cartID = -1;
-    // if (cart.length === 0) {
-    //    cartID = 0;
-    // } else {
-    //   cartID = Math.max(...cart.map(item => item.id));
-    //   cartID += 1;
-    // }
-    // const item = {...newItem, id:cartID}
-
-    //find product backend id (1 or 2) based on price
-    let prod_id;
-    if (newItem.price === 165) {
-      prod_id = 1;
-    } else {
-      prod_id = 2;
-    }
-    const id = cartID;
-
-    axios.patch(`${API}/${id}/add`, {"product":{"id": {prod_id}}})
+    //console.log(newItem);
+    axios.patch(`${API}/${cartID}/add`, {
+      "price": newItem["price"],
+      "size": newItem["size"],
+      "collar": newItem["collar"],
+      "closure": newItem["closure"],
+      "pockets": newItem["pockets"],
+      "length": newItem["length"],
+      "bpocket": newItem["bpocket"],
+      "fabric": newItem["fabric"],
+      "notes": newItem["notes"]
+    })
     .then((result) => {
       console.log(result);
+      axios.get(`${API}/${cartID}`)
+      .then((result) => {
+        console.log(result.data);
+        setCart(result.data.products);
+      })
+      .catch((err) => {
+      console.log(err);
+      })
+      navigate("/cart");
     })
     .catch((err) => {
       console.log(err);
-    })
-
-    axios.get(`${API}/${cartID}`)
-    .then((result) => {
-      console.log(result.data);
-      setCart(result.data.products);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    // const newCartItems = cart.concat(newItem);
-    // setCart(newCartItems);
-    navigate("/cart");
+    }) 
   };
 
-
-  //add api call to /cart/id delete 
   const deleteItem = (id) => {
-    const newItems = [];
-        for (let item of cart) {
-          if (item.id !== id) {
-            newItems.push(item);
-          }
-        }
-        setCart(newItems);
+    axios.patch(`${API}/${cartID}/remove`, {"id":id})
+    .then((result) => {
+      console.log(result);
+      axios.get(`${API}/${cartID}`)
+      .then((result) => {
+        console.log(result.data);
+        setCart(result.data.products);
+      })
+      .catch((err) => {
+      console.log(err);
+      })
+      navigate("/cart");
+    })
+    .catch((err) => {
+      console.log(err);
+    }) 
   };
+
+  const onCheckout = (cart) => {
+    axios.post('https://carryon-backend.onrender.com/create-checkout-session', {
+        "products": cart.products
+    })
+    .then((result) => {
+      console.log(result);
+      axios.patch(`${API}/${cartID}/toggle`)
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  }
   
   return (
 
@@ -144,7 +162,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
-          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem}/>} />
+          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem} onCheckout={onCheckout}/>} />
           <Route path="*" element={<NoPage />} />
           <Route path="success" element={<Success />} />
           <Route path="cancel" element={<Cancel />} />
