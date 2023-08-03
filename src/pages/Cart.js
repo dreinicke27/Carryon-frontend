@@ -38,9 +38,7 @@ const Cart = ({ cartData, deleteItem, onCheckout }) => {
       
       <div className="row">
         <div className="col-10">
-        <form>
-            <button type='submit' className="btn btn-dark float-end" onSubmit={() => {onCheckout(cartData)}}>Checkout</button>
-            </form>
+            <button className="btn btn-dark float-end" onClick={onCheckout}>Checkout</button>
         </div>
         </div>
       </div>
