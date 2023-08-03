@@ -26,7 +26,7 @@ function App() {
   console.log(ip);
 
   const [cartData, setCartData] = useState([]);
-  const [cartID, setCartID] = useState(null);
+  const [cartID, setCartID] = useState(1);
   const [cart, setCart] = useState([]);
 
   const navigate = useNavigate();
