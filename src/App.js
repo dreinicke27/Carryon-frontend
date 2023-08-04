@@ -19,20 +19,8 @@ function App() {
   const API = "https://carryon-backend.onrender.com/cart"
 
   const location = useLocation();
-  console.log(location.pathname);
 
-  const toggleComplete = async () => {
-    const id = cartID;
-    if (location.pathname.includes("success") && id !== null) {
-      const res = await axios.patch(`${API}/${id}/toggle`);
-      console.log(res.data);
-      cartSetup();
-    };
-  };
-
-  useEffect(() => {toggleComplete()}, [location]);
-
-  const cartSetup = () => {
+  const cartSetup = async () => {
     axios.get("https://api.ipify.org/?format=json")
     .then((res) => {
       const ip = res.data.ip;
@@ -48,7 +36,7 @@ function App() {
           if (res.data.completed === false) {
             const products = res.data.products;
             setProducts(products);
-          } else { // if cart completed, create a new one
+          } else if (res.data.completed === true) { // if cart completed, create a new one
             const ipString = ip.toString()
             axios.post(API, {"ip": ipString})
             .then((res) => {
@@ -96,6 +84,19 @@ function App() {
   console.log(cart);
   console.log(products);
   console.log(cartID);
+
+  const toggleComplete = async () => {
+    if (cartID !== null) {
+      console.log(location.pathname);
+    }
+    if (location.pathname.includes("success") && cartID !== null) {
+      const res = await axios.patch(`${API}/${cartID}/toggle`);
+      console.log(res.data);
+    };
+  };
+
+
+  useEffect(() => {toggleComplete()}, [location]);
 
 
   const onAddtoCart = (newItem) => {
