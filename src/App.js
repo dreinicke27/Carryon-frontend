@@ -10,15 +10,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  //const [ip, setIP] = useState([]);
-  //const [cartData, setCartData] = useState([]);
-  //const [cartID, setCartID] = useState(null);
   const [cartID, setCartID] = useState(null);
   const [cart, setCart] = useState([]);
 
   const navigate = useNavigate();
 
-  const API = "http://127.0.0.1:4242/cart"
+  const API = "https://carryon-backend.onrender.com/cart"
 
   const getIP = () => {
     axios.get("https://api.ipify.org/?format=json")
@@ -107,7 +104,7 @@ function App() {
   };
 
   const onCheckout = async () => {
-    const res = await axios.post('http://127.0.0.1:4242/create-checkout-session', {"products": cart})
+    const res = await axios.post('https://carryon-backend.onrender.com/create-checkout-session', {"products": cart}, {"headers": {"Access-Control-Allow-Origin": "*"}})
     console.log(res);
     // axios.post('http://127.0.0.1:5000/create-checkout-session', {"products": cart})
     // .then((result) => {
