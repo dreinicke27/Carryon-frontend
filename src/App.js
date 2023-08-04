@@ -125,7 +125,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
           <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem} onCheckout={onCheckout}/>} />
-          <Route path="success" element={<Success />} />
+          <Route path="/success" element={<Success />} />
           <Route path="cancel" element={<Cancel />} />
           <Route path="*" element={<NoPage />} />
         </Route>
