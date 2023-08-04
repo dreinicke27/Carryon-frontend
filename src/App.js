@@ -10,25 +10,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
+  const [cart, setCart] = useState(null);
+  const [products, setProducts] = useState([]);
   const [cartID, setCartID] = useState(null);
-  const [cart, setCart] = useState([]);
 
   const navigate = useNavigate();
 
   const API = "https://carryon-backend.onrender.com/cart"
 
   const location = useLocation();
-  
-  const toggleComplete = async () => {
-    const id = cart.id;
-    console.log(id);
-    if (location.pathname.includes("success") && id !== null) {
-      const res = await axios.patch(`${API}/${id}/toggle`);
-      console.log(res.data);
-    };
-  };
-
-  useEffect(() => {toggleComplete()}, [location]);
 
   const cartSetup = () => {
     axios.get("https://api.ipify.org/?format=json")
@@ -40,17 +30,21 @@ function App() {
         //cart found
         if (res.data.hasOwnProperty("id")) {
           const id = res.data.id;
+          setCart(res.data);
           setCartID(id);
-          const cart = res.data.products;
-          setCart(cart);
+          const products = res.data.products;
+          setProducts(products);
           //cart not found
         } else if (res.data.hasOwnProperty("msg")) {
           const ipString = ip.toString()
           axios.post(API, {"ip": ipString})
           .then((res) => {
-            const cart = res.data.products;
+            const cart = res.data;
             setCart(cart);
-            setCartID(res.data.id);
+            const id = res.data.id;
+            setCartID(id);
+            const products = res.data.products;
+            setProducts(products);
           })
           .catch((err) => {
             console.log(err);
@@ -68,9 +62,21 @@ function App() {
     })
   };
 
-  useEffect(() => {cartSetup()}, [cart.completed]);
+  useEffect(() => {cartSetup()}, []);
   console.log(cart);
+  console.log(products);
   console.log(cartID);
+
+  const toggleComplete = async () => {
+    const id = cartID;
+    console.log(id);
+    if (location.pathname.includes("success") && id !== null) {
+      const res = await axios.patch(`${API}/${id}/toggle`);
+      console.log(res.data);
+    };
+  };
+
+  useEffect(() => {toggleComplete()}, [location]);
 
   const onAddtoCart = (newItem) => {
     axios.patch(`${API}/${cartID}/add`, {
@@ -87,7 +93,7 @@ function App() {
     .then((result) => {
       axios.get(`${API}/${cartID}`)
       .then((result) => {
-        setCart(result.data.products);
+        setProducts(result.data.products);
       })
       .catch((err) => {
       console.log(err);
@@ -104,7 +110,7 @@ function App() {
     .then((result) => {
       axios.get(`${API}/${cartID}`)
       .then((result) => {
-        setCart(result.data.products);
+        setProducts(result.data.products);
       })
       .catch((err) => {
       console.log(err);
@@ -130,7 +136,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
-          <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem} onCheckout={onCheckout}/>} />
+          <Route path="cart" element={<Cart cartData={products} deleteItem={deleteItem} onCheckout={onCheckout}/>} />
           <Route path="success" element={<Success />} />
           <Route path="cancel" element={<Cancel />} />
           <Route path="*" element={<NoPage />} />
