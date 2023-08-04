@@ -21,7 +21,7 @@ function App() {
     axios.get("https://api.ipify.org/?format=json")
     .then((res) => {
       const ip = res.data.ip;
-
+      console.log(ip);
       axios.get(`${API}/ip?ip=${ip}`)
       .then((res) => {
         //cart found
