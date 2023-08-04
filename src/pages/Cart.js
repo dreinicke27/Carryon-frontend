@@ -45,7 +45,3 @@ const Cart = ({ cartData, deleteItem, onCheckout }) => {
       )};
   
   export default Cart;
-
- // "https://carryon-backend.onrender.com/create-checkout-session"
- // "localhost:4242/create-checkout-session"
- // action="https://carryon-backend.onrender.com/create-checkout-session" method="POST"

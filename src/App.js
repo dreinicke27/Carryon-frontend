@@ -107,20 +107,15 @@ function App() {
     const res = await axios.post('https://carryon-backend.onrender.com/create-checkout-session', {"products": cart}, {"headers": {"Access-Control-Allow-Origin": "*"}})
     console.log(res);
     const url = res.data;
-    window.open(url);
-    // axios.post('http://127.0.0.1:5000/create-checkout-session', {"products": cart})
-    // .then((result) => {
-    //   axios.patch(`${API}/${cartID}/toggle`)
-    //   .then((result) => {
-    //     console.log(result)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // })
+    window.open(url, "_self");
+
+    const currentUrl = window.location.href;
+    console.log(currentUrl);
+
+    if (currentUrl.includes("success")) {
+      const res = await axios.patch(`${API}/${cartID}/toggle`);
+      console.log(res);
+    };
   };
   
   return (
@@ -130,9 +125,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path="customizer" element={<Customizer onAddtoCart={onAddtoCart}/>} />
           <Route path="cart" element={<Cart cartData={cart} deleteItem={deleteItem} onCheckout={onCheckout}/>} />
-          <Route path="*" element={<NoPage />} />
           <Route path="success" element={<Success />} />
           <Route path="cancel" element={<Cancel />} />
+          <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
 

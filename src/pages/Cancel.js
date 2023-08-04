@@ -5,6 +5,6 @@ const Cancel = () => {
         </div>
     )
 
-}
+};
 
 export default Cancel;
