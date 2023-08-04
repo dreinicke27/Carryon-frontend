@@ -106,8 +106,8 @@ function App() {
   const onCheckout = async () => {
     const res = await axios.post('https://carryon-backend.onrender.com/create-checkout-session', {"products": cart}, {"headers": {"Access-Control-Allow-Origin": "*"}})
     console.log(res);
-    //const url = res.url;
-    
+    const url = res.data;
+    window.open(url);
     // axios.post('http://127.0.0.1:5000/create-checkout-session', {"products": cart})
     // .then((result) => {
     //   axios.patch(`${API}/${cartID}/toggle`)
