@@ -123,7 +123,7 @@ function App() {
   };
 
   const onCheckout = async () => {
-    const res = await axios.post('https://carryon-backend.onrender.com/create-checkout-session', {"products": cart}, {"headers": {"Access-Control-Allow-Origin": "*"}})
+    const res = await axios.post('https://carryon-backend.onrender.com/create-checkout-session', {"products": products}, {"headers": {"Access-Control-Allow-Origin": "*"}})
     console.log(res);
     const url = res.data;
     window.open(url, "_self");
