@@ -26,6 +26,7 @@ function App() {
     if (location.pathname.includes("success") && id !== null) {
       const res = await axios.patch(`${API}/${id}/toggle`);
       console.log(res.data);
+      cartSetup();
     };
   };
 
