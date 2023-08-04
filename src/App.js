@@ -13,7 +13,7 @@ function App() {
   const [cart, setCart] = useState(null);
   const [products, setProducts] = useState([]);
   const [cartID, setCartID] = useState(null);
-  //const [orderComplete, setOrderComplete] = useState(false);
+  const [orderComplete, setOrderComplete] = useState(false);
 
   const navigate = useNavigate();
 
@@ -85,11 +85,11 @@ function App() {
   console.log(cart);
   console.log(products);
   console.log(cartID);
-  //console.log(orderComplete);
+  console.log(orderComplete);
 
   const getPage = () => {
     if (location.pathname.includes("success")) {
-      //setOrderComplete(true);
+      setOrderComplete(true);
       if (cartID !== null) {
         toggleComplete();
       };
