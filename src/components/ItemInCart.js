@@ -1,8 +1,9 @@
 import outline from '../assets/img/outline.svg';
 import bpocketImg from '../assets/img/bpocket/bpocket.svg';
+import blank from '../assets/img/blank.svg';
 
 const ItemInCart = ({ id, size, collar, length, closure, pockets, bpocket, price, fabric, notes, deleteItem }) => {
-    const bpocketShown = bpocket ? bpocketImg : 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=';
+    const bpocketShown = bpocket ? bpocketImg : blank;
 
     return (
             <div className='row gx-5 py-5'>
@@ -26,3 +27,5 @@ const ItemInCart = ({ id, size, collar, length, closure, pockets, bpocket, price
     );}
 
 export default ItemInCart;
+
+//'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA='

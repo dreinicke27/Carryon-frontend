@@ -19,13 +19,13 @@ const Layout = () => {
       <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
            <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Home</NavLink>
+                <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/customizer" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Customizer</NavLink>
+                <NavLink to="/customizer" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Customizer</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/cart" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Cart</NavLink>
+                <NavLink to="/cart" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Cart</NavLink>
               </li>
           </ul>
       </div>
