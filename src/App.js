@@ -20,9 +20,10 @@ function App() {
   const location = useLocation();
   
   const toggleComplete = async () => {
-    console.log(location);
-    if (location.pathname.includes("success")) {
-      const res = await axios.patch(`${API}/${cartID}/toggle`);
+    const id = cart.id;
+    console.log(id);
+    if (location.pathname.includes("success") && id !== null) {
+      const res = await axios.patch(`${API}/${id}/toggle`);
       console.log(res.data);
     };
   };
