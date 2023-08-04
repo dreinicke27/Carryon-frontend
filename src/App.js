@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
@@ -17,7 +17,19 @@ function App() {
 
   const API = "https://carryon-backend.onrender.com/cart"
 
-  const getIP = () => {
+  const location = useLocation();
+  
+  const toggleComplete = async () => {
+    console.log(location);
+    if (location.pathname.includes("success")) {
+      const res = await axios.patch(`${API}/${cartID}/toggle`);
+      console.log(res.data);
+    };
+  };
+
+  useEffect(() => {toggleComplete()}, [location]);
+
+  const cartSetup = () => {
     axios.get("https://api.ipify.org/?format=json")
     .then((res) => {
       const ip = res.data.ip;
@@ -55,7 +67,7 @@ function App() {
     })
   };
 
-  useEffect(() => {getIP()}, []);
+  useEffect(() => {cartSetup()}, [cart.completed]);
   console.log(cart);
   console.log(cartID);
 
@@ -108,16 +120,9 @@ function App() {
     console.log(res);
     const url = res.data;
     window.open(url, "_self");
-
-    const currentUrl = window.location.href;
-    console.log(currentUrl);
-
-    if (currentUrl.includes("success")) {
-      const res = await axios.patch(`${API}/${cartID}/toggle`);
-      console.log(res);
-    };
   };
-  
+
+
   return (
 
       <Routes>
