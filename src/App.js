@@ -97,13 +97,13 @@ function App() {
   };
 
   const toggleComplete = async () => {
-      const res = await axios.patch(`${API}/${cartID}/toggle`);
-      console.log(res.data);
-      cartSetup();
+    console.log("in toggleComplete");
+    const res = await axios.patch(`${API}/${cartID}/toggle`);
+    console.log(res.data);
   };
 
 
-  useEffect(() => {getPage()}, []);
+  useEffect(() => {getPage()}, [cartSetup]);
 
 
   const onAddtoCart = (newItem) => {
