@@ -10,8 +10,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [ip, setIP] = useState([]);
-  const [cartData, setCartData] = useState([]);
+  //const [ip, setIP] = useState([]);
+  //const [cartData, setCartData] = useState([]);
+  //const [cartID, setCartID] = useState(null);
   const [cartID, setCartID] = useState(null);
   const [cart, setCart] = useState([]);
 
@@ -19,44 +20,47 @@ function App() {
 
   const API = "http://127.0.0.1:4242/cart"
 
-  const getIP = async () => {
-    const res = await axios.get("https://api.ipify.org/?format=json");
-    setIP(res.data.ip.toString());
+  const getIP = () => {
+    axios.get("https://api.ipify.org/?format=json")
+    .then((res) => {
+      const ip = res.data.ip;
+
+      axios.get(`${API}/ip?ip=${ip}`)
+      .then((res) => {
+        //cart found
+        if (res.data.hasOwnProperty("id")) {
+          const id = res.data.id;
+          setCartID(id);
+          const cart = res.data.products;
+          setCart(cart);
+          //cart not found
+        } else if (res.data.hasOwnProperty("msg")) {
+          const ipString = ip.toString()
+          axios.post(API, {"ip": ipString})
+          .then((res) => {
+            const cart = res.data.products;
+            setCart(cart);
+            setCartID(res.data.id);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+        }
+
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
 
-  //just do once 
   useEffect(() => {getIP()}, []);
-
-  console.log(ip);
-
-  const getCartData = async () => {
-    const res = await axios.get(API);
-    setCartData(res.data);
-
-    for (let cart of cartData) {
-      if (cart.ip === ip && cart.completed === false) {
-        const cartID = cart.id;
-        setCartID(cartID);
-
-        const res = await axios.get(`${API}/${cartID}`);
-        setCart(res.data.products);
-      }; 
-    };  
-
-    if (cart === []) {
-      const res = await axios.post(API, {"ip": ip.toString()});
-      const newCart = res.data;
-      const cartID = newCart.id;
-      setCart(newCart);
-      setCartID(cartID);
-    };
-  };
-
-  useEffect(() => {getCartData();}, []);
-
-  console.log(cartData);
-  console.log(cartID);
   console.log(cart);
+  console.log(cartID);
 
   const onAddtoCart = (newItem) => {
     axios.patch(`${API}/${cartID}/add`, {
