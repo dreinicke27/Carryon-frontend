@@ -19,6 +19,17 @@ function App() {
   const API = "https://carryon-backend.onrender.com/cart"
 
   const location = useLocation();
+  console.log(location.pathname);
+
+  const toggleComplete = async () => {
+    const id = cartID;
+    if (location.pathname.includes("success") && id !== null) {
+      const res = await axios.patch(`${API}/${id}/toggle`);
+      console.log(res.data);
+    };
+  };
+
+  useEffect(() => {toggleComplete()}, [location]);
 
   const cartSetup = () => {
     axios.get("https://api.ipify.org/?format=json")
@@ -32,8 +43,26 @@ function App() {
           const id = res.data.id;
           setCart(res.data);
           setCartID(id);
-          const products = res.data.products;
-          setProducts(products);
+          //if cart not completed
+          if (res.data.completed === false) {
+            const products = res.data.products;
+            setProducts(products);
+          } else { // if cart completed, create a new one
+            const ipString = ip.toString()
+            axios.post(API, {"ip": ipString})
+            .then((res) => {
+              const cart = res.data;
+              setCart(cart);
+              const id = res.data.id;
+              setCartID(id);
+              const products = res.data.products;
+              setProducts(products);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          };
+
           //cart not found
         } else if (res.data.hasOwnProperty("msg")) {
           const ipString = ip.toString()
@@ -49,7 +78,7 @@ function App() {
           .catch((err) => {
             console.log(err);
           })
-        }
+        };
 
       })
       .catch((err) => {
@@ -67,16 +96,6 @@ function App() {
   console.log(products);
   console.log(cartID);
 
-  const toggleComplete = async () => {
-    const id = cartID;
-    console.log(id);
-    if (location.pathname.includes("success") && id !== null) {
-      const res = await axios.patch(`${API}/${id}/toggle`);
-      console.log(res.data);
-    };
-  };
-
-  useEffect(() => {toggleComplete()}, [location]);
 
   const onAddtoCart = (newItem) => {
     axios.patch(`${API}/${cartID}/add`, {
