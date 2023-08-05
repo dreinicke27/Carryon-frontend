@@ -2,6 +2,9 @@ import outline from '../assets/img/outline.svg';
 import bpocketImg from '../assets/img/bpocket/bpocket.svg';
 import SizeChart from '../components/SizeChart';
 import { useState } from 'react';
+import fox from '../assets/img/bags/fox.png';
+import green from '../assets/img/bags/green.png';
+import LDC from '../assets/img/bags/LDC.png';
 
 const Customizer = ({ onAddtoCart }) => {
     const importAll = (r) => {
@@ -205,6 +208,21 @@ const Customizer = ({ onAddtoCart }) => {
                                     <option value="3">Three</option>
                                 </select>
                             </div>
+
+                            <div className='form-group pb-3'>
+                                <div className="row">
+                                <div className='col text-center'>
+                                    <img src={fox} alt="Red Fox Bag" className="img-fluid"/>
+                                </div>
+                                <div className='col text-center'>
+                                    <img src={green} alt="Green Bags" className="img-fluid"/>
+                                </div>
+                                <div className='col text-center'>
+                                    <img src={LDC} alt="LDC Bag" className="img-fluid"/>
+                                </div>
+                                </div>
+                            </div>
+
                             <div className="form-group pb-3">
                                 <label htmlFor="FormControlTextarea1">Notes</label>
                                 <textarea className="form-control" id="FormControlTextarea1" rows="3" onChange={addNotes} placeholder="Help us understand exactly what you want! Need extra long sleeves? Like a particular bag pattern, or style? Want to add cuffs, pocket closures, or other extras?"></textarea>
