@@ -22,6 +22,9 @@ const Layout = () => {
                 <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Home</NavLink>
               </li>
               <li className="nav-item">
+                <NavLink to="/about" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">About</NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink to="/customizer" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Customizer</NavLink>
               </li>
               <li className="nav-item">
