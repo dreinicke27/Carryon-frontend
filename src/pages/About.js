@@ -1,5 +1,5 @@
 import bio from '../assets/img/bio.png';
-import "./CustomAccordion.scss"
+import "./Custom.scss"
 
 const About = () => {
     return (

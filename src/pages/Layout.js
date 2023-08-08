@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import logo from '../assets/img/logoIcon.svg';
 
 const Layout = () => {
@@ -35,9 +35,42 @@ const Layout = () => {
   </div>
 </nav>
 
-        <Outlet />
+      <Outlet />
+      <footer className="footer bg-dark d-flex flex-column h-100"> 
+        <div className="container">
+          <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+            <div className="col-md-4 d-flex align-items-center">
+              <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <img src={logo} alt="Carryon logo icon" width="30" height="24"></img>
+              </a>
+              
+            </div>
+            <div className="d-flex align-items-end">
+              <span className="mb-3 mb-md-0 text-muted">© 2023 Carry On</span>
+            </div>
+            {/* <div className="d-flex align-items-end">
+              <span className="mb-3 mb-md-0 text-muted">© 2023 Carry On</span>
+            </div> */}
+          </footer>
+        </div>
+      </footer>
       </>
     )
   };
   
   export default Layout;
+
+  //footer start on line 39
+  // <div class="container">
+ // <footer class="py-3 my-4">
+//    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+//      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+ //     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+   //   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+     // <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+     // <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    //</ul>
+   // <p class="text-center text-muted">© 2022 Company, Inc</p>
+  //</footer>
+//</div> 
+
