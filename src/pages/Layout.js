@@ -1,5 +1,6 @@
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import logo from '../assets/img/logoIcon.svg';
+import insta from '../assets/img/insta.svg'
 
 const Layout = () => {
     return (
@@ -39,18 +40,18 @@ const Layout = () => {
       <footer className="footer bg-dark d-flex flex-column h-100"> 
         <div className="container">
           <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
-            <div className="col-md-4 d-flex align-items-center">
-              <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                <img src={logo} alt="Carryon logo icon" width="30" height="24"></img>
-              </a>
-              
-            </div>
+              <div className=" d-flex align-items-center">
+                <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                  <img src={logo} alt="Carryon logo icon" width="30" height="24"></img>
+                </a>
+                
+              </div>
+              <div className="d-flex align-items-center">
+                <span className="mb-3 mb-md-0 text-muted">© 2023 Carry On</span>
+              </div>
             <div className="d-flex align-items-end">
-              <span className="mb-3 mb-md-0 text-muted">© 2023 Carry On</span>
+                <a href="https://www.instagram.com/carryon.xo/"><img src={insta} alt="link to instagram"/></a>
             </div>
-            {/* <div className="d-flex align-items-end">
-              <span className="mb-3 mb-md-0 text-muted">© 2023 Carry On</span>
-            </div> */}
           </footer>
         </div>
       </footer>
