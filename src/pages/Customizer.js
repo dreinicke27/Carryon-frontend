@@ -2,9 +2,9 @@ import outline from '../assets/img/outline.svg';
 import bpocketImg from '../assets/img/bpocket/bpocket.svg';
 import SizeChart from '../components/SizeChart';
 import { useState } from 'react';
-import fox from '../assets/img/bags/fox.png';
-import green from '../assets/img/bags/green.png';
-import LDC from '../assets/img/bags/LDC.png';
+import fox from '../assets/img/bags/fox.svg';
+import green from '../assets/img/bags/green.svg';
+import LDC from '../assets/img/bags/LDC.svg';
 
 const Customizer = ({ onAddtoCart }) => {
     const importAll = (r) => {
