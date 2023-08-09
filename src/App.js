@@ -94,7 +94,7 @@ const App = () => {
   };
 
   const sendOrder = () => {
-    emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams, "e29nE3vrrH2jlZd70")
+    emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams, process.env.REACT_APP_EMAIL_PUBLIC_KEY)
     .then(function(response) {
       console.log('SUCCESS!', response.status, response.text);
    }, function(error) {
