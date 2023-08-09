@@ -3,6 +3,12 @@ $accordion-button-active-color: black;
 $accordion-button-focus-border-color: black;
 $accordion-button-focus-box-shadow: black;
 
+.card-img-overlay {
+    text-align: left;
+    z-index: 2;
+}
 
 
 @import "bootstrap/scss/bootstrap";
+
+

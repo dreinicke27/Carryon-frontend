@@ -26,7 +26,7 @@ const Cart = ({ cartData, deleteItem, onCheckout }) => {
     });
 
     return (
-      <div className="container py-5">
+      <div className="container min-vh-100 py-5">
       <h1 className="pb-5">CART</h1>
       {itemComponents}
 
