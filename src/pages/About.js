@@ -1,6 +1,6 @@
 import bio from '../assets/img/bio.png';
 import "./Custom.scss"
-import two from '../assets/img/carousel/two.svg';
+import two from '../assets/img/carousel/two.png';
 
 
 const About = () => {

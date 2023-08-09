@@ -1,6 +1,5 @@
-import one from '../assets/img/carousel/one.svg';
-// import two from '../assets/img/carousel/two.svg';
-import three from '../assets/img/carousel/three.svg';
+import one from '../assets/img/carousel/one.png';
+import three from '../assets/img/carousel/three.png';
 import title from '../assets/img/carryOn.png';
 import "./Custom.scss"
 import { useRef, useState } from 'react';
