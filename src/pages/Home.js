@@ -1,10 +1,35 @@
 import one from '../assets/img/carousel/one.png';
 // import two from '../assets/img/carousel/two.png';
-// import three from '../assets/img/carousel/three.png';
+import three from '../assets/img/carousel/three.png';
 import title from '../assets/img/carryOn.png';
 import "./Custom.scss"
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Home = () => {
+  const [success, setSuccess] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_lggqmf7', 'template_hkmipwf', form.current, 'e29nE3vrrH2jlZd70')
+      .then((result) => {
+          console.log(result.text);
+          setSuccess("Success! Your message has been submitted. We will reply ASAP.");
+          setName("");
+          setEmail("");
+          setMessage("");
+      }, (error) => {
+          console.log(error.text);
+          setSuccess("Your message could not be submitted. Please try again.");
+      });
+    };
+
   return (
     <div>
       <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">  
@@ -62,30 +87,38 @@ const Home = () => {
         </div>
     </div>
 
-      <div className="py-5 bg-light bg-gradient"> 
-        <div className="container">
-          <h3>Contact Us</h3>
-          <div className="fs-6 fw-light mb-2">Post your message below. We will get back to you ASAP</div>
-          <form id="contact_form" name="contact_form" method="post">
-              <div className="mb-3 row">
-                  <div className="col">
-                      <label>Your Name:</label>
-                      <input type="text" required maxlength="50" class="form-control" id="name" name="name"/>
-                  </div>
-                  <div className="col">
-                      <label htmlFor="email_addr">Your Email:</label>
-                      <input type="email" required maxlength="50" class="form-control" id="email_addr" name="email"
-                          placeholder="name@example.com"/>
-                  </div>
-              </div>
-              <div className="mb-3">
-                  <label htmlFor="message">Message</label>
-                  <textarea className="form-control" id="message" name="message" rows="3"></textarea>
-              </div>
-              <div className="d-grid justify-content-end">
-              <button type="submit" className="btn btn-outline-dark">Submit</button>
-              </div>
-          </form>
+      <div className="bg-light bg-gradient"> 
+        <div className="container-fluid mh-100">
+          <div className="row">
+          <div className='col'>
+              <img src={three} alt="femme person in white jacket" className='img-fluid'></img>
+          </div>
+          <div className="col-8 gx-5 py-3 justify-content-end">
+            <h3>Contact Us</h3>
+            <div className="fs-6 fw-light mb-2">Questions or comments? Post your message below.</div>
+            <form ref={form} id="contact_form" name="contact_form" onSubmit={sendEmail}>
+                <div className="mb-3 row">
+                    <div className="col">
+                        <label>Your Name:</label>
+                        <input type="text" required maxlength="50" class="form-control" id="name" name="name" placeholder="First Last" value={name} onChange={(event) => setName(event.target.value)}/>
+                    </div>
+                    <div className="col">
+                        <label htmlFor="email_addr">Your Email:</label>
+                        <input type="email" required maxlength="50" class="form-control" id="email_addr" name="email"
+                            placeholder="name@example.com" value={email} onChange={(event) => setEmail(event.target.value)}/>
+                    </div>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="message">Message</label>
+                    <textarea className="form-control" id="message" name="message" rows="3" value={message} onChange={(event) => setMessage(event.target.value)}></textarea>
+                </div>
+                <div className="d-grid justify-content-end">
+                <button type="submit" className="btn btn-outline-dark">Submit</button>
+                </div>
+                <span>{success}</span>
+            </form>
+          </div>
+        </div>
         </div>
       </div>
 

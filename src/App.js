@@ -7,8 +7,9 @@ import NoPage from "./pages/NoPage";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import About from "./pages/About";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import emailjs from '@emailjs/browser';
 
 function App() {
   const [cart, setCart] = useState(null);
@@ -88,9 +89,23 @@ function App() {
   console.log(cartID);
   console.log(orderComplete);
 
+  const templateParams = {
+    products: products
+  }
+
+  const sendOrder = () => {
+    emailjs.send('service_lggqmf7', 'template_6zt9mkv', templateParams, 'e29nE3vrrH2jlZd70')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+    };
+
   const getPage = () => {
     if (location.pathname.includes("success")) {
       setOrderComplete(true);
+      sendOrder();
       if (cartID !== null) {
         toggleComplete();
       };
@@ -98,7 +113,6 @@ function App() {
   };
 
   const toggleComplete = async () => {
-    console.log("in toggleComplete");
     const res = await axios.patch(`${API}/${cartID}/toggle`);
     console.log(res.data);
   };
