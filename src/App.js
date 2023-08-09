@@ -11,7 +11,7 @@ import { useState, useEffect} from "react";
 import axios from "axios";
 import emailjs from '@emailjs/browser';
 
-function App() {
+const App = () => {
   const [cart, setCart] = useState(null);
   const [products, setProducts] = useState([]);
   const [cartID, setCartID] = useState(null);
@@ -91,7 +91,7 @@ function App() {
 
   const templateParams = {
     products: products
-  }
+  };
 
   const sendOrder = () => {
     emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams, process.env.REACT_APP_EMAIL_PUBLIC_KEY)
@@ -100,6 +100,7 @@ function App() {
    }, function(error) {
       console.log('FAILED...', error);
    });
+  };
 
   const getPage = () => {
     if (location.pathname.includes("success")) {
@@ -187,6 +188,6 @@ function App() {
       </Routes>
 
   );
-}
+};
 
 export default App;
