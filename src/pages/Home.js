@@ -17,7 +17,7 @@ const Home = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_lggqmf7', 'template_hkmipwf', form.current, 'e29nE3vrrH2jlZd70')
+    emailjs.sendForm(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_CONTACT, form.current, process.env.REACT_APP_EMAIL_PUBLIC_KEY)
       .then((result) => {
           console.log(result.text);
           setSuccess("Success! Your message has been submitted. We will reply ASAP.");

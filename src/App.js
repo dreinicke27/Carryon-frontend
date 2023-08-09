@@ -7,7 +7,7 @@ import NoPage from "./pages/NoPage";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import About from "./pages/About";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import emailjs from '@emailjs/browser';
 
@@ -94,7 +94,7 @@ function App() {
   }
 
   const sendOrder = () => {
-    emailjs.send('service_lggqmf7', 'template_6zt9mkv', templateParams, 'e29nE3vrrH2jlZd70')
+    emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams, process.env.REACT_APP_EMAIL_PUBLIC_KEY)
       .then((result) => {
           console.log(result.text);
       }, (error) => {
