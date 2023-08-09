@@ -95,19 +95,18 @@ function App() {
 
   const sendOrder = () => {
     emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams, process.env.REACT_APP_EMAIL_PUBLIC_KEY)
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-    };
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+   }, function(error) {
+      console.log('FAILED...', error);
+   });
 
   const getPage = () => {
     if (location.pathname.includes("success")) {
       setOrderComplete(true);
-      sendOrder();
       if (cartID !== null) {
         toggleComplete();
+        sendOrder();
       };
     };
   };
