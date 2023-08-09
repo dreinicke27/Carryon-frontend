@@ -90,7 +90,7 @@ const App = () => {
   console.log(orderComplete);
 
   const templateParams = {
-    products: products
+    id: cartID
   };
 
   const sendOrder = () => {
