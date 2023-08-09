@@ -1,6 +1,6 @@
-import one from '../assets/img/carousel/one.png';
-// import two from '../assets/img/carousel/two.png';
-import three from '../assets/img/carousel/three.png';
+import one from '../assets/img/carousel/one.svg';
+// import two from '../assets/img/carousel/two.svg';
+import three from '../assets/img/carousel/three.svg';
 import title from '../assets/img/carryOn.png';
 import "./Custom.scss"
 import { useRef, useState } from 'react';
@@ -36,10 +36,14 @@ const Home = () => {
         <div className="carousel-inner">
     
             <div className="card-img-overlay container py-5 ">
-              <div className='h-100 d-flex flex-column justify-content-center col-3 offset-1'>
-                <h1 className="text-white">Carry On</h1>
-                <p className="text-white pb-2">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <div className="row h-100 align-items-center">
+              <div className='col-6'>
+                <img src={title} className='img-fluid' alt="Carry On"></img>
+                <p className="text-white">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+              <div className='pb-2'>
                 <a href="/#/customizer" type="button" class="btn btn-lg btn-outline-light">Customizer</a>
+              </div>
               </div>
             </div>
     
@@ -81,19 +85,20 @@ const Home = () => {
       </div>
 
         <div className='text-center py-5'>
-          <h3>Upcycled. Handmade. Sustainable Wears.</h3>
           <img src={title} className='img-fluid' alt="Carry On"></img>
-          <p>Text about the us. Lorem ipsum something figuring out about how long the text should be.</p>
+          <h3 className="py-3">Upcycled. Handmade. Sustainable Wears.</h3>
+          <p className="pb-3">Text about the us. Lorem ipsum something figuring out about how long the text should be.</p>
+          <a href="/#/about" type="button" className="btn btn-dark">About Us</a>
         </div>
     </div>
 
       <div className="bg-light bg-gradient"> 
-        <div className="container-fluid mh-100">
+        <div className="mh-100">
           <div className="row">
-          <div className='col'>
+          <div className='col-4'>
               <img src={three} alt="femme person in white jacket" className='img-fluid'></img>
           </div>
-          <div className="col-8 gx-5 py-3 justify-content-end">
+          <div className="col-7 gx-5 py-3 ">
             <h3>Contact Us</h3>
             <div className="fs-6 fw-light mb-2">Questions or comments? Post your message below.</div>
             <form ref={form} id="contact_form" name="contact_form" onSubmit={sendEmail}>
