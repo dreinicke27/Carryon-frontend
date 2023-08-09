@@ -93,8 +93,10 @@ const App = () => {
     products: products
   };
 
+  useEffect(() => emailjs.init(process.env.REACT_APP_EMAIL_PUBLIC_KEY), []);
+
   const sendOrder = () => {
-    emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams, process.env.REACT_APP_EMAIL_PUBLIC_KEY)
+    emailjs.send(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE_ORDER, templateParams)
     .then(function(response) {
       console.log('SUCCESS!', response.status, response.text);
    }, function(error) {
