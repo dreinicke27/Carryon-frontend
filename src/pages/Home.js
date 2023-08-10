@@ -34,13 +34,13 @@ const Home = () => {
       <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">  
         <div className="carousel-inner">
     
-            <div className="card-img-overlay container py-5 ">
-              <div className="row h-100 align-items-center">
+            <div className="card-img-overlay container">
+              <div className="row h-100 align-items-end py-5">
               <div className='col-6'>
-                <img src={title} className='img-fluid' alt="Carry On"></img>
+                <h1 className="text-white">Carry On</h1>
                 <p className="text-white">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
-              <div className='pb-2'>
+              <div className='pb-5'>
                 <a href="/#/customizer" type="button" class="btn btn-lg btn-outline-light">Customizer</a>
               </div>
               </div>
@@ -61,35 +61,36 @@ const Home = () => {
       </div> 
 
     <div className="container py-5">
-      <figure className="text-center py-5">
-        <blockquote className="blockquote">
-          <p>A well-known quote, contained in a blockquote element.</p>
+      <div className='text-center py-5'>
+        <img src={title} className='img-fluid' alt="Carry On"></img>
+        <h3 className="py-3">Upcycled. Handmade. Sustainable Wears.</h3>
+        <p className="pb-3">Text about the us. Lorem ipsum something figuring out about how long the text should be.</p>
+        <a href="/#/about" type="button" className="btn btn-lg btn-outline-dark">About Us</a>
+      </div>
+
+      <div className="row py-5">
+        <div className='col'>
+          <img src={one} alt="femme person in floral jacket"  className="rounded img-fluid px-3"/>
+        </div> 
+        <div className='col-7'>
+          <div className="px-3">
+          <h3>Custom Pieces, Made to Measure</h3>
+          <p className="py-3">Text about the customizer. Lorem ipsum something figuring out about how long the text should be.</p>
+          <a href="/#/customizer" type="button" class="btn btn-lg btn-dark">Customizer</a>
+          </div>
+        </div> 
+      </div>
+
+    </div>
+
+    <figure className="text-center py-5">
+        <blockquote className="blockquote pb-3">
+          <h3>A well-known quote, contained in a blockquote element.</h3>
         </blockquote>
         <figcaption className="blockquote-footer">
           Someone famous in <cite title="Source Title">Source Title</cite>
         </figcaption>
       </figure>
-
-      <div className="row py-5">
-        <div className='col'>
-          <img src={one} alt="femme person in floral jacket"  className="img-fluid rounded px-3"/>
-        </div> 
-        <div className='col'>
-          <div className="px-3">
-          <h3>Customizer</h3>
-          <p className="py-3">Text about the customizer. Lorem ipsum something figuring out about how long the text should be.</p>
-          <a href="/#/customizer" type="button" class="btn btn-dark">Customizer</a>
-          </div>
-        </div> 
-      </div>
-
-        <div className='text-center py-5'>
-          <img src={title} className='img-fluid' alt="Carry On"></img>
-          <h3 className="py-3">Upcycled. Handmade. Sustainable Wears.</h3>
-          <p className="pb-3">Text about the us. Lorem ipsum something figuring out about how long the text should be.</p>
-          <a href="/#/about" type="button" className="btn btn-dark">About Us</a>
-        </div>
-    </div>
 
       <div className="bg-light bg-gradient"> 
         <div className="mh-100">
