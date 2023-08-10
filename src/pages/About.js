@@ -1,4 +1,5 @@
-import bio from '../assets/img/bio.png';
+import ben from '../assets/img/ben.png';
+import yellow from '../assets/img/yellow.png';
 import "./Custom.scss"
 import two from '../assets/img/carousel/two.png';
 
@@ -6,38 +7,35 @@ import two from '../assets/img/carousel/two.png';
 const About = () => {
     return (
     <div>
-        <div className="container pt-5 pb-3">
-            <h1>ABOUT US</h1>
-        </div>
-        <div class="row justify-content-end">
-            <div className='col-6 align-self-end'>
-                <img src={two} alt="masc person in jacket made from coffee bean burlap sack" className='img-fluid d-inline-block rounded'/>
+        <div class="row justify-content-end align-items-center bg-light bg-gradient">
+            <div className="col-5">
+                <h1>ABOUT US</h1>
+            </div>
+            <div className='col-5 align-self-end'>
+                <img src={two} alt="masc person in jacket made from coffee bean burlap sack" className='img-fluid d-inline-block'/>
             </div>
         </div>
        
     <div className="container">
       <h2 className="text-center pt-5 pb-3">Our Promise</h2>
-      <p className="text-center pb-5">Lorem ipsum stuff about what we do and how long should this section be.</p>
+      <p className="text-center pb-5 w-75 mx-auto">Lorem ipsum stuff about what we do and how long should this section be.</p>
       
       <h2>Our Process</h2>
       <div className="row gx-5 py-3">
         <div className='col-6'>
-            <p>Hi! We're Cole and Danica, and we started Carry On to keep 
-                textiles out of landfills. We create one-of-a-kind clothing and 
-                wares from upcycled fabric, thrifted and found items, and more.</p>
-            <p>Carry On is queer owned, and based in Seattle, WA. </p>
+            <p>It all started with sewing on thrifted and found fabrics as a low-stakes and fun way to practice. Then it became our whole ethos. </p>
             <a href="/#/customizer" type="button" class="btn btn-outline-dark">Shop Custom</a>
         </div>
         <div className="col">
-            <img src={bio} alt="carryon's founders" className="img-fluid"/>
+            <img src={ben} alt="Customer wearing a custom-made burlap jacket" className="img-fluid rounded"/>
         </div>
       </div>
       <div className="row gx-5 py-5">
         <div className="col">
-            <img src={bio} alt="carryon's founders" className="img-fluid"/>
+            <img src={yellow} alt="Yellow pre-made jacket with vintage buttons" className="img-fluid rounded"/>
         </div>
         <div className='col-6'>
-            <h4>Title</h4>
+
             <p>Hi! We're Cole and Danica, and we started Carry On to keep 
                 textiles out of landfills. We create one-of-a-kind clothing and 
                 wares from upcycled fabric, thrifted and found items, and more.</p>

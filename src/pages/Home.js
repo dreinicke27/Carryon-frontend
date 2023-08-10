@@ -33,14 +33,14 @@ const Home = () => {
     <div>
       <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">  
         <div className="carousel-inner">
-    
-            <div className="card-img-overlay container">
-              <div className="row h-100 align-items-end py-5">
+
+            <div className="card-img-overlay container pt-5">
+              <div className="row align-items-center py-5">
               <div className='col-6'>
-                <h1 className="text-white">Carry On</h1>
-                <p className="text-white">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h1 className="text-white display-2"><strong>Carry On</strong></h1>
+                <p className="text-white">Keeping textiles out of landfills by giving them new life.</p>
               </div>
-              <div className='pb-5'>
+              <div className='py-5'>
                 <a href="/#/customizer" type="button" class="btn btn-lg btn-outline-light">Customizer</a>
               </div>
               </div>
@@ -63,25 +63,27 @@ const Home = () => {
     <div className="container py-5">
       <div className='text-center py-5'>
         <img src={title} className='img-fluid' alt="Carry On"></img>
-        <h3 className="py-3">Upcycled. Handmade. Sustainable Wears.</h3>
-        <p className="pb-3">Text about the us. Lorem ipsum something figuring out about how long the text should be.</p>
+        <h3 className="py-3">Upcycled. Handmade. Sustainable Wares.</h3>
+        <p className="pb-3 w-75 mx-auto">We make unique, wearable pieces out of material that might otherwise be discarded.  Carry On was inspired by the notion that everything old can be new again. 
+        We thoughtfully craft pieces you'll love for years to come.</p>
         <a href="/#/about" type="button" className="btn btn-lg btn-outline-dark">About Us</a>
       </div>
 
-      <div className="row py-5">
+    </div>
+
+    <div className="row py-5 align-items-center bg-light bg-gradient">
         <div className='col'>
-          <img src={one} alt="femme person in floral jacket"  className="rounded img-fluid px-3"/>
+          <img src={one} className="rounded img-fluid" alt="femme person in floral jacket"/>
         </div> 
         <div className='col-7'>
           <div className="px-3">
           <h3>Custom Pieces, Made to Measure</h3>
-          <p className="py-3">Text about the customizer. Lorem ipsum something figuring out about how long the text should be.</p>
+          <p className="py-3 w-75">Let us make you the clothes of your dreams! Use our customizer to tell us exactly what you'd like.</p>
+          <p className="py-3 w-75">The sky is the limit with your custom chore coat, and we can't wait to bring your vision to life, guaranteeing exactly the right fit and style.</p>
           <a href="/#/customizer" type="button" class="btn btn-lg btn-dark">Customizer</a>
           </div>
         </div> 
       </div>
-
-    </div>
 
     <figure className="text-center py-5">
         <blockquote className="blockquote pb-3">
@@ -93,8 +95,7 @@ const Home = () => {
       </figure>
 
       <div className="bg-light bg-gradient"> 
-        <div className="mh-100">
-          <div className="row">
+          <div className="row justify-content-start">
           <div className='col-4'>
               <img src={three} alt="femme person in white jacket" className='img-fluid'></img>
           </div>
@@ -124,7 +125,7 @@ const Home = () => {
             </form>
           </div>
         </div>
-        </div>
+      
       </div>
 
 
