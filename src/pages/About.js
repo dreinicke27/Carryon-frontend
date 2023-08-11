@@ -24,7 +24,7 @@ const About = () => {
       <h2>Our Process</h2>
       <div className="row gx-5 py-3">
         <div className='col-6'>
-            <p className="py-3">It all started with sewing on thrifted and found fabrics as a low-stakes and fun way to practice working with new patterns, and creating our own. Now, we can't imagine buying new fabric! </p>
+            <p className="pb-3">It all started with sewing on thrifted and found fabrics as a low-stakes and fun way to practice working with new patterns, and creating our own. Now, we can't imagine buying new fabric! </p>
             <p className="pb-3">We work with textiles like curtains, blankets, and burlap green coffee sacks and re-imagine them into one-of-a-kind garments and ware</p>
             <p className="pb-3">Custom jackets are made-to-measure, just for you. They are fully lined, comfy, and lightweight.</p>
             <a href="/#/customizer" type="button" class="btn btn-outline-dark">Shop Custom</a>
@@ -38,7 +38,7 @@ const About = () => {
             <img src={yellow} alt="Yellow pre-made jacket with vintage buttons" className="img-fluid rounded"/>
         </div>
         <div className='col-6'>
-            <p className="py-3">Once discarded or donated, over 66% of textiles end up in landfills. This amounts to about 21 billion pounds of textile waste each year. </p>
+            <p className="pb-3">Once discarded or donated, over 66% of textiles end up in landfills. This amounts to about 21 billion pounds of textile waste each year. </p>
             <p className="pb-3">Our mission is to repurpose and reuse textiles, keeping them in circulation and out of landfills.</p>
             <p className="pb-3">We make sustainable fashion you'll feel great wearing.</p>
             <a href="https://fbb3a3.myshopify.com/collections/all" target="_blank" rel="noreferrer" type="button" class="btn btn-outline-dark">Shop Pre-Made</a>

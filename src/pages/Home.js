@@ -33,16 +33,15 @@ const Home = () => {
     <div>
       <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">  
         <div className="carousel-inner">
-
-            <div className="card-img-overlay container pt-5">
+            <div className="card-img-overlay container h-75 pt-5">
               <div className="row align-items-center py-5">
-              <div className='col-6'>
-                <h1 className="text-white display-2"><strong>Carry On</strong></h1>
-                <p className="text-white">Keeping textiles out of landfills by giving them new life.</p>
-              </div>
-              <div className='py-5'>
-                <a href="/#/customizer" type="button" class="btn btn-lg btn-outline-light">Customizer</a>
-              </div>
+                <div className='col-6'>
+                  <h1 className="text-white display-2"><strong>Carry On</strong></h1>
+                  <p className="text-white">Keeping textiles out of landfills by giving them new life.</p>
+                </div>
+                <div className='py-5 d-none d-md-inline'>
+                  <a href="/#/customizer" type="button" class="btn btn-lg btn-outline-light">Customizer</a>
+                </div>
               </div>
             </div>
     
@@ -71,15 +70,17 @@ const Home = () => {
 
     </div>
 
-    <div className="row py-5 align-items-center bg-light bg-gradient">
+    <div className="row py-5 align-items-start bg-light bg-gradient">
         <div className='col'>
           <img src={one} className="rounded img-fluid" alt="femme person in floral jacket"/>
         </div> 
         <div className='col-7'>
           <div className="px-3">
-          <h3>Custom Pieces, Made to Measure</h3>
-          <p className="py-3 w-75">Let us make you the clothes of your dreams! Use our customizer to tell us exactly what you'd like.</p>
-          <p className="py-3 w-75">The sky is the limit with your custom chore coat, and we can't wait to bring your vision to life, guaranteeing exactly the right fit and style.</p>
+          <h3 className="pb-3">Custom Pieces, Made to Measure</h3>
+          <p className="pb-3 w-75">Let us make you the clothes of your dreams! Use our customizer to tell us exactly what you'd like.</p>
+          <p className="pb-3 w-75">The sky is the limit with your custom chore coat, and we can't wait to bring your vision to life, guaranteeing exactly the right fit and style.</p>
+          <p className="pb-3 w-75">We love working with unexpected materials, like burlap green coffee bean sacks. Everything we make is comfy, durable, and special.</p>
+
           <a href="/#/customizer" type="button" class="btn btn-lg btn-dark">Customizer</a>
           </div>
         </div> 
