@@ -41,7 +41,7 @@ const About = () => {
             <p className="py-3">Once discarded or donated, over 66% of textiles end up in landfills. This amounts to about 21 billion pounds of textile waste each year. </p>
             <p className="pb-3">Our mission is to repurpose and reuse textiles, keeping them in circulation and out of landfills.</p>
             <p className="pb-3">We make sustainable fashion you'll feel great wearing.</p>
-            <a href="/#/customizer" type="button" class="btn btn-outline-dark">Shop Pre-Made</a>
+            <a href="https://fbb3a3.myshopify.com/collections/all" target="_blank" rel="noreferrer" type="button" class="btn btn-outline-dark">Shop Pre-Made</a>
 
         </div>
       </div>

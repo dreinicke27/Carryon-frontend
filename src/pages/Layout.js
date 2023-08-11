@@ -29,6 +29,9 @@ const Layout = () => {
                 <NavLink to="/customizer" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Customizer</NavLink>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="https://fbb3a3.myshopify.com/collections/all" target="_blank" rel="noreferrer">Pre-Made</a>              
+              </li>              
+              <li className="nav-item">
                 <NavLink to="/cart" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} data-toggle="collapse" data-target="#navbarCollapse">Cart</NavLink>
               </li>
           </ul>
