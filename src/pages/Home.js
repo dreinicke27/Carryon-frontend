@@ -1,5 +1,10 @@
 import one from '../assets/img/carousel/one.png';
 import three from '../assets/img/carousel/three.png';
+import ben from '../assets/img/carousel/benGlitch.png';
+import adriane from '../assets/img/carousel/adrianeGlitch.png';
+import carmen from '../assets/img/carousel/carmenGlitch.png';
+import cole from '../assets/img/carousel/coleGlitch.png';
+import danica from '../assets/img/carousel/danicaGlitch.png';
 import title from '../assets/img/carryOn.png';
 import "./Custom.scss"
 import { useRef, useState } from 'react';
@@ -47,14 +52,20 @@ const Home = () => {
     
 
           <div className="carousel-item active" data-bs-interval="3000">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" className="d-block w-100" alt="Wild Landscape"/>
+            <img src={adriane} className="d-block w-100" alt="Wild Landscape"/>
 
           </div>
           <div className="carousel-item" data-bs-interval="3000">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" className="d-block w-100" alt="Camera"/>
+            <img src={ben} className="d-block w-100" alt="Camera"/>
           </div>
           <div className="carousel-item" data-bs-interval="3000">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" className="d-block w-100" alt="Exotic Fruits"/>
+            <img src={carmen} className="d-block w-100" alt="Exotic Fruits"/>
+          </div>
+          <div className="carousel-item" data-bs-interval="3000">
+            <img src={cole} className="d-block w-100" alt="Exotic Fruits"/>
+          </div>
+          <div className="carousel-item" data-bs-interval="3000">
+            <img src={danica} className="d-block w-100" alt="Exotic Fruits"/>
           </div>
         </div>
       </div> 
@@ -86,12 +97,12 @@ const Home = () => {
         </div> 
       </div>
 
-    <figure className="text-center py-5">
+    <figure className="text-center py-5 container">
         <blockquote className="blockquote pb-3">
-          <h3>A well-known quote, contained in a blockquote element.</h3>
+          <h3>"Only 15% of used textiles are ‘recycled,’ and of those, up to half are simply shipped abroad to other countries, where they land in landfills."</h3>
         </blockquote>
         <figcaption className="blockquote-footer">
-          Someone famous in <cite title="Source Title">Source Title</cite>
+          Julia Devoy, PHD, MTS, MBA <cite title="Source Title">BU School of Public Health</cite>
         </figcaption>
       </figure>
 
