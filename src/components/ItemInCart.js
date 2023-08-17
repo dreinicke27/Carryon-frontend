@@ -28,4 +28,3 @@ const ItemInCart = ({ id, size, collar, length, closure, pockets, bpocket, price
 
 export default ItemInCart;
 
-//'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA='
